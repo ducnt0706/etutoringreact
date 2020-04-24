@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { fireauth, firestore } from '../firebaseconfig';
-import Notification from './Notification';
+import { fireauth} from '../firebaseconfig';
 import {Link} from 'react-router-dom';
 class Navbar extends Component {
 

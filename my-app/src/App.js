@@ -2,22 +2,20 @@ import React, { Component } from 'react';
 import './css/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';// import bootstrap library
 import 'font-awesome/css/font-awesome.min.css';// import fontawesome icons library
-import 'jquery';
 import './js/front.js';
 import './css/Homepage.css';
 import './css/fontastic.css';
 //TODO: To import router react
 import {BrowserRouter, Switch,Route} from 'react-router-dom';
 //TODO: to import firebase
-import { fireauth,firestore } from './firebaseconfig';
+import { fireauth } from './firebaseconfig';
 //TODO: To import component
-import Test from './components/Test';
-import Login from './components/Login';
-import Navbar from './components/Navbar';
-import Sidebar from './components/Sidebar';
-import Homepage from './components/Homepage';
-import Contact from './components/Contact';
-import Message from './components/Message';
+import Navbar from './nav/Navbar';
+import Sidebar from './nav/Sidebar';
+import Login from './routes/Login';
+import Homepage from './routes/Homepage';
+import Contact from './routes/Contact';
+import Message from './routes/Message';
 class App extends Component {
 
   constructor(props) {

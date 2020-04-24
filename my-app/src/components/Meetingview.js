@@ -11,7 +11,7 @@ class Meetingview extends Component {
 
   componentDidMount = async () => {
     const snapshot = await firestore.collection('meetings')
-                                    .where("tutorgmail", "==", "hannn@fpt.edu.vn")
+                                    .where("tutorgmail", "==", "lytruongfe@gmail.com")
                                     .limit(10)
                                     .get();
     const meetingarr = snapshot.docs.map(doc => {
@@ -30,7 +30,7 @@ class Meetingview extends Component {
     this.setState({
         meetings: meetingarr
     });
-    //console.log(this.state.meetings);
+    console.log(this.state.meetings);
   }
 
     render() {

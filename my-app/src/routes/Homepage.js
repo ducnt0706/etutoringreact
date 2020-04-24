@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Itemcontrol from './Itemcontrol';
-import Postview from './Postview';
-import Meetingview from './Meetingview';
-import Footer from './Footer';
+import Itemcontrol from '../components/Itemcontrol';
+import Postview from '../components/Postview';
+import Meetingview from '../components/Meetingview';
+import Footer from '../components/Footer';
 
 class Homepage extends Component {
     render() {
