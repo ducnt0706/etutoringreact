@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { firestore } from '../firebaseconfig';
+import Post from '../components/Post';
 
 class Postview extends Component {
 
@@ -16,6 +17,7 @@ class Postview extends Component {
       .get();
     const postarr = snapshot.docs.map(doc => {
       return {
+        id:doc.id,
         content: doc.data().content,
         imageUrl: doc.data().imageUrl,
         loves: doc.data().loves,
@@ -31,48 +33,41 @@ class Postview extends Component {
     //console.log(this.state.posts);
   }
 
+  handleRemove= async (id)=>{
+    const allposts=this.state.posts;
+    var confirm=window.confirm("Are you sure you want to remove this post?");
+    if(confirm==true){
+      //TODO:Delete data from db
+    await firestore.collection('posts').doc(id).delete().then(function () {
+      console.log("Document successfully deleted!");
+    }).catch(function (error) {
+      console.error("Error removing document: ", error);
+    });
+      //TODO update UI
+      const posts=allposts.filter(post=>post.id !==id);
+      this.setState({posts});
+    }
+  }
+
   render() {
     var posts = this.state.posts;
-    var postList = posts.map((doc, index) => {
-      return (
-        <div className="item" key={index}>
-          <div className="feed d-flex justify-content-between">
-            <div className="feed-body d-flex justify-content-between">
-              <span className="feed-profile">
-                <img src={doc.tutorPictureurl}  alt="person" className="img-fluid rounded-circle" />
-              </span>
-              <div className="content">
-                <h5>{doc.tutorname}</h5>
-                  <div className="full-date"><small>{doc.time}</small></div>
-                <hr />
-                <p>{doc.content}</p>
-                <img src={doc.imageUrl} alt="Photo.." className="img-fluid"/>
-                  <div className="CTAs">
-                    <button className="btn btn-xs btn-secondary"><i className="fa fa-heart"></i> {doc.loves} Loves</button>
-                  </div>
-              </div>
-              </div>
-            </div>
-          </div>
-        )
-      })
       return (
           <div className="col-lg-8">
             <div className="daily-feeds card">
-              <div className="card-close">
-                <div className="dropdown">
-                  <button type="button" className="dropdown-toggle">
-                    <i className="fa fa-ellipsis-v"></i>
-                  </button>
+                <div className="card-close">
+                  <div className="dropdown">
+                    <button type="button" className="dropdown-toggle text-success ">
+                      <i className="fa fa-plus-square fa-2x"></i>
+                    </button>
+                  </div>
                 </div>
-              </div>
 
               <div className="card-header">
                 <h3 className="h4">Daily Posts</h3>
               </div>
 
               <div id="tutor-post-box" className="card-body no-padding">
-                  {postList}
+                {posts.map(post => <Post {...post} key={post.id} onRemove={this.handleRemove} />)}
               </div>
 
             </div>

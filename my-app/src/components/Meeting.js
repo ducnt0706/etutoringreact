@@ -2,11 +2,11 @@ import React from 'react';
 
 const Meeting = ({ id,content, date, status, studentgmail, studentname, time, title, onRemove }) => {
     return (
-        <div className="item">
+        <div className="item" key={id}>
             <div className="row">
                 <div className="col-4 date-holder bg-color-orange">
                     <div className="text-right">
-                        <div className="icon bg-danger" onClick={()=>onRemove(id)} ><i className="fa fa-close "></i></div>
+                        <div className="icon bg-danger pointer" onClick={()=>onRemove(id)} ><i className="fa fa-close "></i></div>
                     </div>
                     <div className="date text-center">
                         <h3 className="text-color-black">{time}</h3>

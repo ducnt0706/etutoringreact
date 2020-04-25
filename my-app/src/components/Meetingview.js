@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import {firestore } from '../firebaseconfig';
+import Meeting from '../components/Meeting';
 
 class Meetingview extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -34,21 +36,70 @@ class Meetingview extends Component {
     //console.log(this.state.meetings);
   }
 
-  handleRemoveMeeting= async (id)=>{
+  handleRemove= async (id)=>{
     const allmeetings=this.state.meetings;
-
-    const meetings=allmeetings.filter(meeting=>meeting.id !==id);
-
-    this.setState({meetings});
+    var confirm=window.confirm("Are you sure you want to remove this meeting?");
+    if(confirm==true){
+      //TODO:Delete data from db
+    await firestore.collection('meetings').doc(id).delete().then(function () {
+      console.log("Document successfully deleted!");
+    }).catch(function (error) {
+      console.error("Error removing document: ", error);
+    });
+      //TODO update UI
+      const meetings=allmeetings.filter(meeting=>meeting.id !==id);
+      this.setState({meetings});
+    }
   }
-  //TODO: delete meeting
-// function deleteMeeting(idMeeting) {
-//   firebase.firestore().collection("meetings").doc(idMeeting).delete().then(function () {
-//     console.log("Document successfully deleted!");
-//   }).catch(function (error) {
-//     console.error("Error removing document: ", error);
-//   });
-// }
+  // function createNewMeeting(tutorname, tutorgmail, title, content, date, time, status, studentgmail, studentname) {
+  //   var meetingDoc = {
+  //     studentgmail: studentgmail,
+  //     studentname: studentname,
+  //     tutorname: tutorname,
+  //     tutorgmail: tutorgmail,
+  //     title: title,
+  //     content: content,
+  //     date: date,
+  //     time: time,
+  //     status: status
+  //   }
+  //   firebase.firestore().collection('meetings').add(meetingDoc).then(() => {
+  //     console.log("Meeting Document successfully written!");
+  //   })
+  // }
+
+  render() {
+    var meetings=this.state.meetings;
+      return (
+          <div className="col-lg-4">
+                <div className="recent-activities card">
+
+                  <div className="card-close">
+                    <div className="dropdown">
+                      <button type="button" className="dropdown-toggle text-success ">
+                        <i className="fa fa-plus-square fa-2x"></i>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="card-header">
+                    <h3 className="h4">Meeting Activities</h3>
+                  </div>
+                  <div id="tutor-meeting-box" className="card-body no-padding">
+                    
+                    {meetings.map(meeting => <Meeting {...meeting} key={meeting.id} onRemove={this.handleRemove} />)}
+
+                  </div>
+                </div>
+              </div>
+      );
+  }
+}
+
+export default Meetingview;
+
+
+  
 //TODO: update status meeting
 // function updateMeetingStatus(idMeeting) {
 //   firebase.firestore().collection("meetings").doc(idMeeting).update({
@@ -59,56 +110,3 @@ class Meetingview extends Component {
 //     console.error("Error updating document: ", error);
 //   });
 // }
-
-    render() {
-      var meetings=this.state.meetings;
-      var meetingitems=meetings.map((doc)=>{
-        return (
-          <div className="item" key={doc.id}>
-                        <div className="row">
-                          <div className="col-4 date-holder bg-color-orange">
-                              <div className="text-right">
-                                    <div className="icon bg-danger" ><i className="fa fa-close "></i></div>
-                              </div>
-                              <div className="date text-center"> 
-                                    <h3 className="text-color-black">{doc.time}</h3>
-                                    <h6 className="text-color-black">{doc.date}</h6>
-                                    <div><i className={doc.status? "fa fa-thumbs-up fa-3x text-success":"fa fa-paper-plane fa-3x" }></i></div>
-                               </div> 
-                          </div>
-                          <div id="tutor-meeting-content" className="col-8 content">
-                            <h5>{doc.title}</h5>
-                            <p>{doc.content}</p>
-                            <p>{doc.studentname} {doc.studentgmail}</p>
-                          </div>
-                        </div>
-                      </div>
-          );
-      });
-        return (
-            <div className="col-lg-4">
-                  <div className="recent-activities card">
-
-                    <div className="card-close">
-                      <div className="dropdown">
-                        <button type="button" id="closeCard8" data-toggle="dropdown" aria-haspopup="true"
-                          aria-expanded="false" className="dropdown-toggle"><i className="fa fa-ellipsis-v"></i>
-                        </button>
-                      </div>
-                    </div>
-
-                    <div className="card-header">
-                      <h3 className="h4">Meeting Activities</h3>
-                    </div>
-                    <div id="tutor-meeting-box" className="card-body no-padding">
-                      
-                      {meetingitems}
-
-                    </div>
-                  </div>
-                </div>
-        );
-    }
-}
-
-export default Meetingview;

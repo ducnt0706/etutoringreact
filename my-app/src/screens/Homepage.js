@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Itemcontrol from '../components/Itemcontrol';
 import Postview from '../components/Postview';
 import Meetingview from '../components/Meetingview';
-import Meetings from '../components/Meetings';
 import Footer from '../components/Footer';
 
 class Homepage extends Component {
@@ -25,7 +24,7 @@ class Homepage extends Component {
                         <div className="container-fluid">
                             <div className="row">
                                 <Postview/>
-                                <Meetings/>
+                                <Meetingview/>
                             </div>
                         </div>
                     </section>
