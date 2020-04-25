@@ -16,6 +16,7 @@ class Meetingview extends Component {
                                     .get();
     const meetingarr = snapshot.docs.map(doc => {
         return {
+            id: doc.id,
             content: doc.data().content,
             date: doc.data().date,
             status: doc.data().status,
@@ -33,11 +34,37 @@ class Meetingview extends Component {
     //console.log(this.state.meetings);
   }
 
+  handleRemoveMeeting= async (id)=>{
+    const allmeetings=this.state.meetings;
+
+    const meetings=allmeetings.filter(meeting=>meeting.id !==id);
+
+    this.setState({meetings});
+  }
+  //TODO: delete meeting
+// function deleteMeeting(idMeeting) {
+//   firebase.firestore().collection("meetings").doc(idMeeting).delete().then(function () {
+//     console.log("Document successfully deleted!");
+//   }).catch(function (error) {
+//     console.error("Error removing document: ", error);
+//   });
+// }
+//TODO: update status meeting
+// function updateMeetingStatus(idMeeting) {
+//   firebase.firestore().collection("meetings").doc(idMeeting).update({
+//     status: true
+//   }).then(function () {
+//     console.log("Document successfully updated!");
+//   }).catch(function (error) {
+//     console.error("Error updating document: ", error);
+//   });
+// }
+
     render() {
       var meetings=this.state.meetings;
-      var meetingitems=meetings.map((doc,index)=>{
+      var meetingitems=meetings.map((doc)=>{
         return (
-          <div className="item" key={index}>
+          <div className="item" key={doc.id}>
                         <div className="row">
                           <div className="col-4 date-holder bg-color-orange">
                               <div className="text-right">
