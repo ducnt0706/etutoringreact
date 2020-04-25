@@ -19,7 +19,7 @@ class Postview extends Component {
         content: doc.data().content,
         imageUrl: doc.data().imageUrl,
         loves: doc.data().loves,
-        time: doc.data().time.toDate(),
+        time: doc.data().time.toDate().toString(),
         tutorPictureurl: doc.data().tutorPictureurl,
         tutorgmail: doc.data().tutorgmail,
         tutorname: doc.data().tutorname,
@@ -28,7 +28,7 @@ class Postview extends Component {
     this.setState({
       posts: postarr
     });
-    console.log(this.state.posts);
+    //console.log(this.state.posts);
   }
 
   render() {
@@ -43,7 +43,7 @@ class Postview extends Component {
               </span>
               <div className="content">
                 <h5>{doc.tutorname}</h5>
-                    <div className="full-date"><small></small></div>
+                  <div className="full-date"><small>{doc.time}</small></div>
                 <hr />
                 <p>{doc.content}</p>
                 <img src={doc.imageUrl} alt="Photo.." className="img-fluid"/>
