@@ -30,7 +30,7 @@ class Meetingview extends Component {
     this.setState({
         meetings: meetingarr
     });
-    console.log(this.state.meetings);
+    //console.log(this.state.meetings);
   }
 
     render() {

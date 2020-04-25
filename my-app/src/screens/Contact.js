@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Footer from '../components/Footer';
+import Contactview from '../components/Contactview';
 
 class Contact extends Component {
     render() {
@@ -12,9 +13,7 @@ class Contact extends Component {
                 </header>
                 <div>
                     <section className="dashboard-counts no-padding-bottom ">
-                        <div className="container-fluid">
-                            Hello this is content of contact!
-                        </div>
+                        <Contactview/>
                     </section>
                 </div>   
                 <Footer/>

@@ -981,13 +981,13 @@ section.dashboard-counts .number strong {
 }
 
 section.dashboard-counts .row {
-  padding: 30px 15px;
+  padding: 20px 10px;
   margin: 0;
 }
 
 section.dashboard-counts div[class*='col-'] .item {
   border-right: 1px solid #eee;
-  padding: 15px 0;
+  padding: 10px 0;
 }
 
 section.dashboard-counts div[class*='col-']:last-of-type .item {
@@ -1093,8 +1093,8 @@ section.dashboard-counts div[class*='col-']:last-of-type .item {
 */
 .project .row {
   margin: 0;
-  padding: 15px 0;
-  margin-bottom: 15px;
+  padding: 0px 0;
+  margin-bottom: 3px;
 }
 
 .project div[class*='col-'] {

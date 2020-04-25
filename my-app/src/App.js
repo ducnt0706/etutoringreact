@@ -12,10 +12,10 @@ import { fireauth } from './firebaseconfig';
 //TODO: To import component
 import Navbar from './nav/Navbar';
 import Sidebar from './nav/Sidebar';
-import Login from './routes/Login';
-import Homepage from './routes/Homepage';
-import Contact from './routes/Contact';
-import Message from './routes/Message';
+import Login from './screens/Login';
+import Homepage from './screens/Homepage';
+import Contact from './screens/Contact';
+import Message from './screens/Message';
 class App extends Component {
 
   constructor(props) {
