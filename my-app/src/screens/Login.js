@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../css/Login.css';
 import img from '../img/hero-img.png';
 //TODO: to import firebase
-import firebase,{ signInWithGoogle } from '../firebaseconfig';
+import { signInWithGoogle } from '../firebaseconfig';
 
 class Login extends Component {
     render() {

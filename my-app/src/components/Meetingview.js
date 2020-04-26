@@ -19,17 +19,19 @@ class Meetingview extends Component {
         title:'',
     }
   }
+
   getUserName=()=> {
     return fireauth.currentUser.displayName;
   }
 
-     getGmail=()=> {
+  getGmail=()=> {
     return fireauth.currentUser.email;
   }
 
   toggleModal = ()=>{
     this.setState({isOpen:!this.state.isOpen})
-}  
+  }  
+
   componentDidMount = async () => {
         this.unsubscribe= firestore.collection('meetings').where("tutorgmail", "==", "lytruongfe@gmail.com").limit(10).onSnapshot(snapshot =>{
           const meetings=snapshot.docs.map(doc => {
@@ -50,12 +52,6 @@ class Meetingview extends Component {
         });
   }
 
-  
-
-  handleCreate= async(meeting)=>{
-    firestore.collection('meetings').add(meeting);
-  }
-
   handleRemove= async (id)=>{
     var confirm=window.confirm("Are you sure you want to remove this meeting?");
     if(confirm==true){
@@ -67,7 +63,8 @@ class Meetingview extends Component {
     });
     }
   }
-   createNewMeeting=()=> {
+
+  handleCreate=()=> {
     var meetingDoc = {
       studentgmail: this.state.studentgmail,
       studentname: this.state.studentname,
@@ -82,7 +79,6 @@ class Meetingview extends Component {
     firestore.collection('meetings').add(meetingDoc).then(() => {
       console.log("Meeting Document successfully written!");
     })
-
     this.toggleModal()
   }
 
@@ -128,7 +124,7 @@ class Meetingview extends Component {
                                         <input id="emailInputMeeting" type="email" placeholder="Email of student" onChange={txt=>this.setState({studentgmail:txt.target.value})}/><br />
                                         <input id="nameInputMeeting" type="text" placeholder="Name of student"  onChange={txt=>this.setState({studentname:txt.target.value})}/><br />
                                         <div>
-                                            <button type="submit" className="btn btn-warning" onClick={this.createNewMeeting}>Done!</button>
+                                            <button type="submit" className="btn btn-warning" onClick={this.handleCreate}>Done!</button>
                                             <div className="text-success"></div>
                                         </div>
                                     </div>

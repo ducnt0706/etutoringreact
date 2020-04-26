@@ -1,5 +1,4 @@
 import React from 'react';
-import firebase from '../firebaseconfig';
 
 const Meeting = ({ id,content, date, status, studentgmail, studentname, time, title, onRemove }) => {
 

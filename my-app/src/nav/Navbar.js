@@ -23,55 +23,55 @@ class Navbar extends Component {
                                         <div className="brand-text d-none d-sm-inline-block d-lg-none"><strong>eTutoring</strong></div>
                                     </span>
                                 </Link>
-                                <a id="toggle-btn" className="menu-btn active"><span></span><span></span><span></span></a>
+                                <span id="toggle-btn" className="menu-btn active"><span></span><span></span><span></span></span>
                             </div>
 
                             <ul className="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
 
-                                <li className="nav-item d-flex align-items-center"><a id="search" href="#"><i className="icon-search"></i></a>
+                                <li className="nav-item d-flex align-items-center"><span id="search" href="#"><i className="icon-search"></i></span>
                                 </li>
 
-                                <li className="nav-item dropdown"> <a id="notifications" rel="nofollow" data-target="#" href="#"
+                                <li className="nav-item dropdown"> <span id="notifications" rel="nofollow" data-target="#" href="#"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" className="nav-link"><i
-                                        className="fa fa-bell-o"></i><span className="badge bg-red badge-corner">12</span></a>
+                                        className="fa fa-bell-o"></i><span className="badge bg-red badge-corner">12</span></span>
                                     <ul aria-labelledby="notifications" className="dropdown-menu">
                                         <li>
-                                            <a rel="nofollow" href="#" className="dropdown-item">
+                                            <span rel="nofollow" href="#" className="dropdown-item">
                                             <div className="notification">
                                                 <div className="notification-content"><i className="fa fa-envelope bg-green"></i>You have 6 new messages
                                             </div>
                                                 <div className="notification-time"><small>4 minutes ago</small></div>
                                             </div>
-                                            </a>
+                                            </span>
                                         </li>
                                         <li>
-                                            <a rel="nofollow" href="#" className="dropdown-item">
+                                            <span rel="nofollow" href="#" className="dropdown-item">
                                             <div className="notification">
                                                 <div className="notification-content"><i className="fa fa-twitter bg-blue"></i>You have 2 followers
                                                 </div>
                                                 <div className="notification-time"><small>4 minutes ago</small></div>
                                             </div>
-                                            </a>
+                                            </span>
                                         </li>
                                         <li>
-                                            <a rel="nofollow" href="#" className="dropdown-item">
+                                            <span rel="nofollow" href="#" className="dropdown-item">
                                             <div className="notification">
                                                 <div className="notification-content"><i className="fa fa-upload bg-orange"></i>Server Rebooted</div>
                                                 <div className="notification-time"><small>4 minutes ago</small></div>
                                             </div>
-                                            </a>
+                                            </span>
                                         </li>
                                         <li>
-                                            <a rel="nofollow" href="#" className="dropdown-item">
+                                            <span rel="nofollow" href="#" className="dropdown-item">
                                             <div className="notification">
                                                 <div className="notification-content"><i className="fa fa-twitter bg-blue"></i>You have 2 followers
                                                 </div>
                                                 <div className="notification-time"><small>10 minutes ago</small></div>
                                             </div>
-                                            </a>
+                                            </span>
                                         </li>
                                         <li>
-                                            <a rel="nofollow" href="#" className="dropdown-item all-notifications text-center"> <strong>view all notifications </strong></a>
+                                            <span rel="nofollow" href="#" className="dropdown-item all-notifications text-center"> <strong>view all notifications </strong></span>
                                         </li>
                                     </ul>
                                 </li>

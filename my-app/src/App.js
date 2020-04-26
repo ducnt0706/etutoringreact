@@ -72,7 +72,6 @@ class App extends Component {
   render() { 
     if(this.state.user){
       return ( 
-          <AppProvider>
             <BrowserRouter>
               <div>
                 <Navbar/>
@@ -86,7 +85,6 @@ class App extends Component {
                 </div>
               </div>
             </BrowserRouter>
-          </AppProvider>
       );
     }else{
       return (

@@ -20,10 +20,8 @@ class Postview extends Component {
     }
   }
 
-  unsubscribe=()=>{};
-
   componentDidMount = async () => {
-    this.unsubscribe= firestore.collection('posts').where("tutorgmail", "==", "ducntgch17377@fpt.edu.vn").limit(10).onSnapshot(snapshot =>{
+    firestore.collection('posts').where("tutorgmail", "==", "ducntgch17377@fpt.edu.vn").limit(10).onSnapshot(snapshot =>{
       const posts = snapshot.docs.map(doc => {
         return {
           id:doc.id,
@@ -40,9 +38,6 @@ class Postview extends Component {
     })
   }
 
-  componentWillMount= ()=>{
-    this.unsubscribe();
-  }
   toggleModal = ()=>{
         this.setState({isOpen:!this.state.isOpen})
     }  
