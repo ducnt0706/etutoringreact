@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './css/index.css';
 import App from './App';
+import Application from './Application';
 
-
-ReactDOM.render(<App role="tutor"/>,document.getElementById('root'));
+ReactDOM.render(<Application role="tutor"/>,document.getElementById('root'));
 

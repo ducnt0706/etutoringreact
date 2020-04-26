@@ -4,6 +4,7 @@ import Postview from '../components/Postview';
 import Meetingview from '../components/Meetingview';
 import Footer from '../components/Footer';
 
+
 class Homepage extends Component {
     render() {
         return (
@@ -22,7 +23,7 @@ class Homepage extends Component {
                     <br></br>
                     <section className="updates no-padding-top">
                         <div className="container-fluid">
-                            <div className="row">
+                            <div className="row">                             
                                 <Postview/>
                                 <Meetingview/>
                             </div>

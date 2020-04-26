@@ -28,12 +28,15 @@ class Meetingview extends Component {
     return fireauth.currentUser.email;
   }
 
+  getPhotoUrl=()=>{
+    return fireauth.currentUser.photoURL;
+  }
+
   toggleModal = ()=>{
     this.setState({isOpen:!this.state.isOpen})
   }  
-
   componentDidMount = async () => {
-        this.unsubscribe= firestore.collection('meetings').where("tutorgmail", "==", "lytruongfe@gmail.com").limit(10).onSnapshot(snapshot =>{
+        this.unsubscribe= firestore.collection('meetings').where("tutorgmail", "==", "ducntgch17377@fpt.edu.vn").limit(10).onSnapshot(snapshot =>{
           const meetings=snapshot.docs.map(doc => {
             return {
                 id: doc.id,
