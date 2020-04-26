@@ -3,7 +3,8 @@ import Itemcontrol from '../components/Itemcontrol';
 import Postview from '../components/Postview';
 import Meetingview from '../components/Meetingview';
 import Footer from '../components/Footer';
-
+//Model data from providers
+import Postprovider from '../providers/Postprovider';
 
 class Homepage extends Component {
     render() {
@@ -23,8 +24,10 @@ class Homepage extends Component {
                     <br></br>
                     <section className="updates no-padding-top">
                         <div className="container-fluid">
-                            <div className="row">                             
-                                <Postview/>
+                            <div className="row"> 
+                                <Postprovider>
+                                    <Postview/>
+                                </Postprovider>
                                 <Meetingview/>
                             </div>
                         </div>

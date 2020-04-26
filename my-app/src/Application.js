@@ -17,8 +17,7 @@ import Homepage from './screens/Homepage';
 import Contact from './screens/Contact';
 import Message from './screens/Message';
 
-//Model data from providers
-import Postprovider from './providers/Postprovider';
+
 
 //REGION: App component
 class Application extends Component {
@@ -49,21 +48,19 @@ class Application extends Component {
   render() { 
     if(this.state.user){
       return ( 
-            <Postprovider>
-                <BrowserRouter>
-                <div>
-                    <Navbar/>
-                    <div className="page-content d-flex align-items-stretch">
-                    <Sidebar role="Tutor" name={this.state.user.displayName} photoUrl={this.state.user.photoURL}/>
-                        <Switch>
-                        <Route exact path='/' component={Homepage}/>
-                        <Route path='/contact' component={Contact}/>
-                        <Route path='/message' component={Message}/>
-                        </Switch>
-                    </div>
-                </div>
-                </BrowserRouter>
-            </Postprovider>
+          <BrowserRouter>
+          <div>
+              <Navbar/>
+              <div className="page-content d-flex align-items-stretch">
+              <Sidebar role="Tutor" name={this.state.user.displayName} photoUrl={this.state.user.photoURL}/>
+                  <Switch>
+                  <Route exact path='/' component={Homepage}/>
+                  <Route path='/contact' component={Contact}/>
+                  <Route path='/message' component={Message}/>
+                  </Switch>
+              </div>
+          </div>
+          </BrowserRouter>
       );
     }else{
       return (
