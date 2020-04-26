@@ -20,27 +20,27 @@ const Postview=()=>{
   }
   const posts=useContext(PostContext);
 
-    return (
-      <div className="col-lg-8">
-  
-        <div className="daily-feeds card">
-  
-          <Postadd/>
-  
-          <div className="card-header">
-            <h3 className="h4">Daily Posts</h3>
-          </div>
-  
-  
-          <div id="tutor-post-box" className="card-body no-padding">
+  return (
+    <div className="col-lg-8">
 
-            {posts.map(post => <Post {...post} key={post.id} onRemove={handleRemove} />)}
-            
-          </div>
-  
+      <div className="daily-feeds card">
+
+        <Postadd/>
+
+        <div className="card-header">
+          <h3 className="h4">Daily Posts</h3>
         </div>
+
+
+        <div id="tutor-post-box" className="card-body no-padding">
+
+          {posts.map(post => <Post {...post} key={post.id} onRemove={handleRemove} />)}
+          
+        </div>
+
       </div>
-    );
+    </div>
+  );
   
   
   
