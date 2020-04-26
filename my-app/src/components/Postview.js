@@ -10,27 +10,29 @@ class Postview extends Component {
       posts: [],
     }
   }
+
+  unsubscribe=()=>{};
+
   componentDidMount = async () => {
-    const snapshot = await firestore.collection('posts')
-      .where("tutorgmail", "==", "ducntgch17377@fpt.edu.vn")
-      .limit(10)
-      .get();
-    const postarr = snapshot.docs.map(doc => {
-      return {
-        id:doc.id,
-        content: doc.data().content,
-        imageUrl: doc.data().imageUrl,
-        loves: doc.data().loves,
-        time: doc.data().time.toDate().toString(),
-        tutorPictureurl: doc.data().tutorPictureurl,
-        tutorgmail: doc.data().tutorgmail,
-        tutorname: doc.data().tutorname,
-      }
-    });
-    this.setState({
-      posts: postarr
-    });
-    //console.log(this.state.posts);
+    this.unsubscribe= firestore.collection('posts').where("tutorgmail", "==", "ducntgch17377@fpt.edu.vn").limit(10).onSnapshot(snapshot =>{
+      const posts = snapshot.docs.map(doc => {
+        return {
+          id:doc.id,
+          content: doc.data().content,
+          imageUrl: doc.data().imageUrl,
+          loves: doc.data().loves,
+          time: doc.data().time,
+          tutorPictureurl: doc.data().tutorPictureurl,
+          tutorgmail: doc.data().tutorgmail,
+          tutorname: doc.data().tutorname,
+        }
+      });
+      this.setState({posts});
+    })
+  }
+
+  componentWillMount= ()=>{
+    this.unsubscribe();
   }
 
   handleRemove= async (id)=>{
@@ -43,9 +45,6 @@ class Postview extends Component {
     }).catch(function (error) {
       console.error("Error removing document: ", error);
     });
-      //TODO update UI
-      const posts=allposts.filter(post=>post.id !==id);
-      this.setState({posts});
     }
   }
 

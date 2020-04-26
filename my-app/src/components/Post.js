@@ -1,6 +1,11 @@
 import React from 'react';
+import {firestore} from '../firebaseconfig';
+import moment from 'moment';
 
 const Post = ({id, content, imageUrl, loves, time, tutorPictureurl, tutorgmail, tutorname, onRemove}) => {
+    const postRef= firestore.collection('posts').doc(id);
+    const love =()=>postRef.update({loves:loves+1});
+    
     return (
         <div className="item" >
             <div className="feed d-flex justify-content-between">
@@ -11,7 +16,7 @@ const Post = ({id, content, imageUrl, loves, time, tutorPictureurl, tutorgmail, 
 
                     <div className="content">
                         <h5>{tutorname}</h5>
-                        <div className="full-date"><small>{time}</small></div>
+                        <div className="full-date"><small>{moment(time.toDate()).calendar()}</small></div>
                         <hr />
                         <p>{content}</p>
                         <img src={imageUrl} alt="Photo.." className="img-fluid" />
@@ -21,7 +26,7 @@ const Post = ({id, content, imageUrl, loves, time, tutorPictureurl, tutorgmail, 
             <br/>
             <div className="row">
                 <div className="col-sm-4">
-                    <button className="btn btn-xs  container-fluid "><i className="fa fa-heart"></i> {loves} Loves</button>
+                    <button className="btn btn-xs  container-fluid " onClick={love}><i className="fa fa-heart"></i> {loves} Loves</button>
                 </div>
                 <div className="col-sm-4">
                     <button className="btn btn-xs  container-fluid"><i className="fa fa-comments"></i> Comment</button>
