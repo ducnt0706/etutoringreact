@@ -2,7 +2,7 @@ import React from 'react';
 
 const Meeting = ({ id,content, date, status, studentgmail, studentname, time, title, onRemove }) => {
     return (
-        <div className="item" key={id}>
+        <div className="item">
             <div className="row">
                 <div className="col-4 date-holder bg-color-orange">
                     <div className="text-right">

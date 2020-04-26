@@ -21,14 +21,26 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: {}
+      user: {},
+      profile:{
+        displayName:null,
+        email:null,
+        photoURL:null,
+      }
     };
   }
 
   authListener = () => {
     fireauth.onAuthStateChanged((user) => {
       if (user) {
-        this.setState({user});
+        this.setState({
+          user:user,
+          profile:{
+            displayName:user.displayName,
+            email:user.email,
+            photoURL:user.photoURL
+          }
+        });
         //console.log(user.displayName);
       } else {
         this.setState({user:null});
@@ -43,6 +55,7 @@ class App extends Component {
 
   render() { 
     if(this.state.user){
+      var profile=this.state.profile;
       return (  
           <BrowserRouter>
             <div>
@@ -50,7 +63,7 @@ class App extends Component {
               <div className="page-content d-flex align-items-stretch">
                 <Sidebar role="Tutor" name={this.state.user.displayName} photoUrl={this.state.user.photoURL}/>
                   <Switch>
-                    <Route exact path='/' component={Homepage}/>
+                    <Route exact path='/' render={props=><Homepage {...props} profile={profile}/> }/>
                     <Route path='/contact' component={Contact}/>
                     <Route path='/message' component={Message}/>
                   </Switch>

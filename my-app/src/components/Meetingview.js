@@ -7,7 +7,7 @@ class Meetingview extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        meetings: [],
+        meetings: []
     }
   }
 
@@ -36,6 +36,17 @@ class Meetingview extends Component {
     //console.log(this.state.meetings);
   }
 
+  handleCreate= async(meeting)=>{
+    const meetings=this.state.meetings;
+
+    const docRef=await firestore.collection('meetings').add(meeting);
+    const doc=await docRef.get();
+
+    const newMeeting = doc;
+
+    this.setState({meetings:[newMeeting,...meetings]});
+  }
+
   handleRemove= async (id)=>{
     const allmeetings=this.state.meetings;
     var confirm=window.confirm("Are you sure you want to remove this meeting?");
@@ -61,7 +72,7 @@ class Meetingview extends Component {
   //     content: content,
   //     date: date,
   //     time: time,
-  //     status: status
+  //     status: false
   //   }
   //   firebase.firestore().collection('meetings').add(meetingDoc).then(() => {
   //     console.log("Meeting Document successfully written!");

@@ -2,7 +2,7 @@ import React from 'react';
 
 const Post = ({id, content, imageUrl, loves, time, tutorPictureurl, tutorgmail, tutorname, onRemove}) => {
     return (
-        <div className="item" key={id}>
+        <div className="item" >
             <div className="feed d-flex justify-content-between">
                 <div className="feed-body d-flex justify-content-between">
                     <span className="feed-profile">

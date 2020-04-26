@@ -24,7 +24,7 @@ class Homepage extends Component {
                         <div className="container-fluid">
                             <div className="row">
                                 <Postview/>
-                                <Meetingview/>
+                                <Meetingview email={this.props.profile.email}/>
                             </div>
                         </div>
                     </section>
