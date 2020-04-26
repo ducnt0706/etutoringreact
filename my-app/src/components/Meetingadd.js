@@ -55,7 +55,7 @@ class Meetingadd extends Component {
                         <i className="fa fa-plus-square fa-2x"></i>
                       </button>
                     </div>
-                  </div>
+                </div>
                   <Modal
                         isOpen={this.state.isOpen}
                         style={customStyles1}
