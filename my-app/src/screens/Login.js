@@ -2,14 +2,9 @@ import React, { Component } from 'react';
 import '../css/Login.css';
 import img from '../img/hero-img.png';
 //TODO: to import firebase
-import firebase,{ fireauth } from '../firebaseconfig';
+import firebase,{ signInWithGoogle } from '../firebaseconfig';
 
 class Login extends Component {
-
-    signInHandler=()=>{
-        var provider = new firebase.auth.GoogleAuthProvider();
-        fireauth.signInWithPopup(provider);
-    }
     render() {
         return (
             <div id='login-page'>
@@ -26,7 +21,7 @@ class Login extends Component {
                         <div className="hero-container">
                             <h1>Welcome to eTutoring</h1>
                             <img src={img} alt="Hero Imgs"/>
-                            <span id='sign-in' className="btn-get-started scrollto" onClick={this.signInHandler}>Get Started</span>
+                            <span id='sign-in' className="btn-get-started scrollto" onClick={signInWithGoogle}>Get Started</span>
                             <div className="btns">
                                 <span ><i className="fa fa-apple fa-3x"></i> App Store</span>
                                 <span ><i className="fa fa-play fa-3x"></i> Google Play</span>

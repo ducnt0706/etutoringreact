@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-import { fireauth} from '../firebaseconfig';
+import {signOut} from '../firebaseconfig';
 import {Link} from 'react-router-dom';
 class Navbar extends Component {
 
-    signOutHandler = () => {
-        fireauth.signOut();
-    }
     render() {
         return (
             <header className="header">
@@ -79,7 +76,7 @@ class Navbar extends Component {
                                     </ul>
                                 </li>
 
-                                <li id="sign-out" className="nav-item pointer" onClick={this.signOutHandler} ><span className="d-none d-sm-inline">Logout </span><i className="fa fa-sign-out"></i></li>
+                                <li id="sign-out" className="nav-item pointer" onClick={signOut} ><span className="d-none d-sm-inline">Logout </span><i className="fa fa-sign-out"></i></li>
                             </ul>
                         </div>
                     </div>

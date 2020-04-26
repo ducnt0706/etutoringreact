@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {firestore } from '../firebaseconfig';
 import Meeting from '../components/Meeting';
 
+
 class Meetingview extends Component {
 
   constructor(props) {
@@ -10,56 +11,45 @@ class Meetingview extends Component {
         meetings: []
     }
   }
+  unsubscribe=()=>{};
 
   componentDidMount = async () => {
-    const snapshot = await firestore.collection('meetings')
-                                    .where("tutorgmail", "==", "lytruongfe@gmail.com")
-                                    .limit(10)
-                                    .get();
-    const meetingarr = snapshot.docs.map(doc => {
-        return {
-            id: doc.id,
-            content: doc.data().content,
-            date: doc.data().date,
-            status: doc.data().status,
-            studentgmail:doc.data().studentgmail,
-            studentname:doc.data().studentname,
-            time:doc.data().time,
-            title:doc.data().title,
-            tutorgmail:doc.data().tutorgmail,
-            tutorname:doc.data().tutorname,
-        }
-    });
-    this.setState({
-        meetings: meetingarr
-    });
-    //console.log(this.state.meetings);
+        this.unsubscribe= firestore.collection('meetings').where("tutorgmail", "==", "lytruongfe@gmail.com").limit(10).onSnapshot(snapshot =>{
+          const meetings=snapshot.docs.map(doc => {
+            return {
+                id: doc.id,
+                content: doc.data().content,
+                date: doc.data().date,
+                status: doc.data().status,
+                studentgmail:doc.data().studentgmail,
+                studentname:doc.data().studentname,
+                time:doc.data().time,
+                title:doc.data().title,
+                tutorgmail:doc.data().tutorgmail,
+                tutorname:doc.data().tutorname,
+            }
+          });
+          this.setState({ meetings});
+        });
+  }
+
+  componentWillMount= ()=>{
+    this.unsubscribe();
   }
 
   handleCreate= async(meeting)=>{
-    const meetings=this.state.meetings;
-
-    const docRef=await firestore.collection('meetings').add(meeting);
-    const doc=await docRef.get();
-
-    const newMeeting = doc;
-
-    this.setState({meetings:[newMeeting,...meetings]});
+    firestore.collection('meetings').add(meeting);
   }
 
   handleRemove= async (id)=>{
-    const allmeetings=this.state.meetings;
     var confirm=window.confirm("Are you sure you want to remove this meeting?");
     if(confirm==true){
       //TODO:Delete data from db
-    await firestore.collection('meetings').doc(id).delete().then(function () {
+    firestore.collection('meetings').doc(id).delete().then(function () {
       console.log("Document successfully deleted!");
     }).catch(function (error) {
       console.error("Error removing document: ", error);
     });
-      //TODO update UI
-      const meetings=allmeetings.filter(meeting=>meeting.id !==id);
-      this.setState({meetings});
     }
   }
   // function createNewMeeting(tutorname, tutorgmail, title, content, date, time, status, studentgmail, studentname) {

@@ -16,6 +16,22 @@ import Login from './screens/Login';
 import Homepage from './screens/Homepage';
 import Contact from './screens/Contact';
 import Message from './screens/Message';
+
+//REGION: App context
+const AppContext = React.createContext();
+class AppProvider extends Component {
+  state = {
+    
+  }
+render() {
+    return <AppContext.Provider value={this.state}>
+      {this.props.children}
+    </AppContext.Provider>
+  }
+}
+
+
+//REGION: App component
 class App extends Component {
 
   constructor(props) {
@@ -55,21 +71,22 @@ class App extends Component {
 
   render() { 
     if(this.state.user){
-      var profile=this.state.profile;
-      return (  
-          <BrowserRouter>
-            <div>
-              <Navbar/>
-              <div className="page-content d-flex align-items-stretch">
-                <Sidebar role="Tutor" name={this.state.user.displayName} photoUrl={this.state.user.photoURL}/>
-                  <Switch>
-                    <Route exact path='/' render={props=><Homepage {...props} profile={profile}/> }/>
-                    <Route path='/contact' component={Contact}/>
-                    <Route path='/message' component={Message}/>
-                  </Switch>
+      return ( 
+          <AppProvider>
+            <BrowserRouter>
+              <div>
+                <Navbar/>
+                <div className="page-content d-flex align-items-stretch">
+                  <Sidebar role="Tutor" name={this.state.user.displayName} photoUrl={this.state.user.photoURL}/>
+                    <Switch>
+                      <Route exact path='/' component={Homepage}/>
+                      <Route path='/contact' component={Contact}/>
+                      <Route path='/message' component={Message}/>
+                    </Switch>
+                </div>
               </div>
-            </div>
-          </BrowserRouter>
+            </BrowserRouter>
+          </AppProvider>
       );
     }else{
       return (
@@ -87,3 +104,5 @@ export default App;
   //c2: use this.updateMessage=this.updateMessage.bind(this);
 //Note: The componentDidMount() method is called after the component is rendered.
 //For use: to update state
+
+//Note: pass props for router: render={props=><Homepage {...props} profile={profile}/> }
