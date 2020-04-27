@@ -43,6 +43,21 @@ const Post = ({id, content, imageUrl, loves, time, tutorPictureurl, tutorgmail, 
                     <div className="col-sm-4">
                      {belongsToCurrentUser(currentUser,tutorgmail) && <button className="btn btn-xs  container-fluid text-danger" onClick={()=>onRemove(id)}><i className="fa fa-close"></i> Delete</button>}
                     </div>
+                </div>
+                <div class="item clearfix">
+                        <div class="feed d-flex justify-content-between">
+                          <div class="feed-body d-flex justify-content-between">
+                            <span class="feed-profile">
+                              <img src="https://photo-2-baomoi.zadn.vn/w1000_r1/2019_08_10_119_31788589/3793ed558f15664b3f04.jpg" alt="person" class="img-fluid rounded-circle"/>
+                            </span>
+                            <div class="content">
+                              <h6>Hoc sinh ngoan</h6>
+                            </div>
+                          </div>
+                          <div class="date text-right"><small>5min ago</small></div>
+                        </div>
+                        <div class="quote has-shadow"> <small>thả tym 🧡</small>
+                        </div>
                 </div>   
             </div>
         )
