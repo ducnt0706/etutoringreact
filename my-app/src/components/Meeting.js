@@ -25,7 +25,7 @@ const Meeting = ({ id,content, date, status, studentgmail, studentname, time, ti
                 </div>
                 <div id="tutor-meeting-content" className="col-8 content">
                     <h5>{title}</h5>
-                    <h6>{content}</h6>
+                    <p>{content}</p>
                     <p>{studentname} <br/> {studentgmail}</p>
                 </div>
             </div>

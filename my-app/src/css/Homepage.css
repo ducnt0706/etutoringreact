@@ -1242,7 +1242,6 @@ section.dashboard-counts div[class*='col-']:last-of-type .item {
   color: #555;
 }
 
-
 .client .client-title span {
   padding: 2px 30px;
   border-radius: 40px;
@@ -2734,7 +2733,7 @@ h5,
 
 h6,
 .h6 {
-  font-size: 0.8rem;
+  font-size: 0.95rem;
 }
 
 .lead {
