@@ -8,7 +8,7 @@ const belongsToCurrentUser= (currentUser, gmail)=>{
     return currentUser.email === gmail;
 }
 
-const Post = ({id, content, imageUrl, loves, time, tutorPictureurl, tutorgmail, tutorname, onRemove}) => {
+const Poststu = ({id, content, imageUrl, loves, time, tutorPictureurl, tutorgmail, tutorname, onRemove}) => {
     const {user}=useContext(UserContext);
 
     const postRef= firestore.collection('posts').doc(id);
@@ -41,7 +41,6 @@ const Post = ({id, content, imageUrl, loves, time, tutorPictureurl, tutorgmail, 
                         <button className="btn btn-xs  container-fluid"><i className="fa fa-comments"></i> Comment</button>
                     </div>
                     <div className="col-sm-4">
-                     {belongsToCurrentUser(user,tutorgmail) && <button className="btn btn-xs  container-fluid text-danger" onClick={()=>onRemove(id)}><i className="fa fa-close"></i> Delete</button>}
                     </div>
                 </div>
                 <div class="item clearfix">
@@ -87,7 +86,6 @@ const Post = ({id, content, imageUrl, loves, time, tutorPictureurl, tutorgmail, 
                         <button className="btn btn-xs  container-fluid"><i className="fa fa-comments"></i> Comment</button>
                     </div>
                     <div className="col-sm-4">
-                    {belongsToCurrentUser(user,tutorgmail) && <button className="btn btn-xs  container-fluid text-danger" onClick={()=>onRemove(id)}><i className="fa fa-close"></i> Delete</button>}
                     </div>
                 </div>   
             </div>
@@ -95,4 +93,4 @@ const Post = ({id, content, imageUrl, loves, time, tutorPictureurl, tutorgmail, 
     }
 }
 
-export default Post;
+export default Poststu;
