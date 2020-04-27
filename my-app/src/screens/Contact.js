@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Footer from '../components/Footer';
 import Contactview from '../components/Contactview';
+import Contactprovider from '../providers/Contactprovider';
 
 class Contact extends Component {
     render() {
@@ -13,7 +14,9 @@ class Contact extends Component {
                 </header>
                 <div>
                     <section className="dashboard-counts no-padding-bottom ">
-                        <Contactview/>
+                        <Contactprovider>
+                            <Contactview/>
+                        </Contactprovider> 
                     </section>
                 </div>   
                 <Footer/>

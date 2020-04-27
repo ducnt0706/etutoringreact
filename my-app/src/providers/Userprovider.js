@@ -1,20 +1,18 @@
 import React,{ Component,createContext} from 'react';
 import { fireauth} from '../firebaseconfig';
 
-export const UserContext=createContext({user:null});
+export const UserContext=createContext();
 
 class Userprovider extends Component {
 
-    state = {user: {}};
+    state = {user:{}};
     
       authListener = () => {
         fireauth.onAuthStateChanged((user) => {
           if (user) {
             this.setState({user});
-            //console.log(user.displayName);
         } else {
             this.setState({user:null});
-            //console.log(user);
           }
         });
       }

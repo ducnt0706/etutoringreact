@@ -23,7 +23,7 @@ import {UserContext} from './providers/Userprovider'
 const Application = ()=> {
     const user= useContext(UserContext);
 
-    if(user && user.uid=="EYjCZIaYnIemSOjOGPONPBIFM2g1"){
+    if(user!=null && user.uid=="EYjCZIaYnIemSOjOGPONPBIFM2g1"){
       return ( 
           <BrowserRouter>
           <div>
@@ -31,9 +31,9 @@ const Application = ()=> {
               <div className="page-content d-flex align-items-stretch">
               <Sidebar role="Tutor" name={user.displayName} photoUrl={user.photoURL}/>
                   <Switch>
-                  <Route exact path='/' component={Homepage}/>
-                  <Route path='/contact' component={Contact}/>
-                  <Route path='/message' component={Message}/>
+                    <Route exact path='/' component={Homepage}/>
+                    <Route path='/contact' component={Contact}/>
+                    <Route path='/message' component={Message}/>
                   </Switch>
               </div>
           </div>

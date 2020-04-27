@@ -1243,12 +1243,6 @@ section.dashboard-counts div[class*='col-']:last-of-type .item {
 }
 
 .client .client-title span {
-  font-size: 0.9em;
-  color: #aaa;
-  display: block;
-}
-
-.client .client-title a {
   padding: 2px 30px;
   border-radius: 40px;
   background: #54e69d;
@@ -1258,7 +1252,7 @@ section.dashboard-counts div[class*='col-']:last-of-type .item {
   text-decoration: none;
 }
 
-.client .client-title a:hover {
+.client .client-title span:hover {
   background: #85b4f2;
 }
 

@@ -5,6 +5,8 @@ import Meetingview from '../components/Meetingview';
 import Footer from '../components/Footer';
 //Model data from providers
 import Postprovider from '../providers/Postprovider';
+import Meetingprovider from '../providers/Meetingprovider';
+
 
 class Homepage extends Component {
     render() {
@@ -28,7 +30,9 @@ class Homepage extends Component {
                                 <Postprovider>
                                     <Postview/>
                                 </Postprovider>
-                                <Meetingview/>
+                                <Meetingprovider>
+                                    <Meetingview/>
+                                </Meetingprovider>  
                             </div>
                         </div>
                     </section>
@@ -40,4 +44,3 @@ class Homepage extends Component {
 }
 
 export default Homepage;
-//email={this.props.profile.email}

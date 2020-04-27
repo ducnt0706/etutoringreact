@@ -28,7 +28,8 @@ class Meetingadd extends Component {
     this.setState({isOpen:!this.state.isOpen})
     } 
 
-    handleCreate=()=> {
+    handleCreate=(e)=> {
+        e.preventDefault();
         var meetingDoc = {
           studentgmail: this.state.studentgmail,
           studentname: this.state.studentname,
@@ -72,18 +73,18 @@ class Meetingadd extends Component {
 
 
                                     <div className="modal-body">
-                                        <input id="titleInputMeeting" type="text" placeholder="Title" onChange={txt=>this.setState({title:txt.target.value})} /><br />
-                                        <textarea id="contentInputMeeting" className="form-control" rows="1" placeholder="Content" onChange={txt=>this.setState({content:txt.target.value})}></textarea>
-                                        <input id="dateInputMeeting" type="date" onChange={txt=>this.setState({date:txt.target.value})}/><br />
-                                        <input id="timeInputMeeting" type="time" onChange={txt=>this.setState({time:txt.target.value})} /><br />
+                                        <input type="text" placeholder="Title" onChange={txt=>this.setState({title:txt.target.value})} /><br />
+                                        <textarea className="form-control" rows="1" placeholder="Content" onChange={txt=>this.setState({content:txt.target.value})} ></textarea>
+                                        <input type="date" onChange={txt=>this.setState({date:txt.target.value})}/><br />
+                                        <input type="time" onChange={txt=>this.setState({time:txt.target.value})} /><br />
                                         <div className="input-group mb-3">
                                             <div className="input-group-text">
-                                                <input type="checkbox" id="statusInputMeeting" value="false" disabled />
+                                                <input type="checkbox"  value="false" disabled />
                                             </div>
                                             <input type="text" className="form-control" placeholder="Waiting for student verify!" disabled />
                                         </div>
-                                        <input id="emailInputMeeting" type="email" placeholder="Email of student" onChange={txt=>this.setState({studentgmail:txt.target.value})}/><br />
-                                        <input id="nameInputMeeting" type="text" placeholder="Name of student"  onChange={txt=>this.setState({studentname:txt.target.value})}/><br />
+                                        <input type="email" placeholder="Email of student" onChange={txt=>this.setState({studentgmail:txt.target.value})} /><br />
+                                        <input itype="text" placeholder="Name of student"  onChange={txt=>this.setState({studentname:txt.target.value})} /><br />
                                         <div>
                                             <button type="submit" className="btn btn-warning" onClick={this.handleCreate}>Done!</button>
                                             <div className="text-success"></div>

@@ -32,7 +32,8 @@ class Postadd extends Component {
     toggleModal = () => {
         this.setState({ isOpen: !this.state.isOpen })
     }
-    handleCreate = () => {
+    handleCreate = (e) => {
+        e.preventDefault();
         var file=this.state.file;
         var post = {
             content: this.state.content,
@@ -84,11 +85,11 @@ class Postadd extends Component {
 
                     <div className="modal-body">
                         <form id="create-new-post">
-                            <input type="text" name="content" placeholder="What is your mind?" onChange={(txt) => this.setState({ content: txt.target.value })} />
+                            <input type="text" placeholder="What is your mind?" onChange={(txt) => this.setState({ content: txt.target.value })} />
                             <br />
-                            <input id="mediaInputPost" type="file" accept="image/*" capture onChange={(e) => this.setState({ file: e.target.files[0]})} />
+                            <input type="file" accept="image/*" capture onChange={(e) => this.setState({ file: e.target.files[0]})} />
                             <br />
-                            <button id="postSubmit" type="submit" className="btn btn-warning" onClick={this.handleCreate}>Post</button>
+                            <button type="submit" className="btn btn-warning" onClick={this.handleCreate}>Post</button>
                         </form>
                     </div>
 

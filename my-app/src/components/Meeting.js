@@ -1,9 +1,17 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {UserContext} from '../providers/Userprovider';
 
-const Meeting = ({ id,content, date, status, studentgmail, studentname, time, title, onRemove }) => {
+const belongsToCurrentUser= (currentUser, gmail)=>{
+    if(!currentUser) return false;
+    return currentUser.email === gmail;
+}
+
+const Meeting = ({ id,content, date, status, studentgmail, studentname, time, title,tutorgmail, onRemove }) => {
+    const currentUser=useContext(UserContext);
 
     return (
-        <div className="item">
+        <div>
+            {belongsToCurrentUser(currentUser,tutorgmail) && <div className="item">
             <div className="row">
                 <div className="col-4 date-holder bg-color-orange">
                     <div className="text-right">
@@ -21,6 +29,7 @@ const Meeting = ({ id,content, date, status, studentgmail, studentname, time, ti
                     <p>{studentname} <br/> {studentgmail}</p>
                 </div>
             </div>
+            </div>}
         </div>
     )
 }

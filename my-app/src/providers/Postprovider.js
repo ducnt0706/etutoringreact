@@ -7,7 +7,7 @@ class Postprovider extends Component {
     state = {posts:[]}
 
     componentDidMount = () => {
-        firestore.collection('posts').where("tutorgmail", "==", "ducntgch17377@fpt.edu.vn").limit(10).onSnapshot(snapshot =>{
+        firestore.collection('posts').orderBy("time","desc").onSnapshot(snapshot =>{
           const posts = snapshot.docs.map(doc => {
             return {
               id:doc.id,
