@@ -5,12 +5,12 @@ export const UserContext=createContext({user:null});
 
 class Userprovider extends Component {
 
-    state = {user:null,loaded:false};
+    state = {user:null,loading:true};
     
       authListener = () => {
         fireauth.onAuthStateChanged((user) => {
           if (user) {
-            this.setState({user,loaded:true});
+            this.setState({user,loading:false});
         } else {
             this.setState({user:null});
           }

@@ -11,17 +11,28 @@ import Tutorroute from './route/Tutorroute';
 import Studentroute from './route/Studentroute';
 //TODO: to import Usercontext
 import {UserContext} from './providers/Userprovider'
+import {TutorContext} from './providers/Tutorprovider';
 
 //REGION: App component
 const App = ()=> {
-    const {user,loaded}= useContext(UserContext);
+    const {user,loading}= useContext(UserContext);
+    const tutors=useContext(TutorContext);
 
-    if(!loaded) return null;
+    if(loading) return null;
+    
+    // const isTutor=(gmail)=>{
+    //   tutors.forEach(tutor=> {
+    //     if(tutor.tutorgmail===gmail){
+    //       return true;
+    //     }
+    //   });
+    //   return false;     
+    // }
 
     if(user!=null){
-      if(user.email=="ducntgch17377@fpt.edu.vn"){
+      if(user.email==="ducntgch17377@fpt.edu.vn"){
         return <Tutorroute/>
-      }else if(user.email=="ducnt0706@gmail.com"){
+      }else if(user.email==="ducnt0706@gmail.com"){
         return <Studentroute/>
       }else{
         return <Login/>

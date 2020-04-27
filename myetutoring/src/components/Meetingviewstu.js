@@ -8,7 +8,7 @@ const Meetingviewstu =()=>{
 
   const handleConfilm = (id)=>{
     var confirm=window.confirm("Are you sure you want to join this meeting?");
-    if(confirm==true){
+    if(confirm===true){
       //TODO:Delete data from db
     firestore.collection('meetings').doc(id).update({
         status:true

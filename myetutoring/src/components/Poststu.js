@@ -3,20 +3,31 @@ import {firestore} from '../firebaseconfig';
 import moment from 'moment';
 import {UserContext} from '../providers/Userprovider';
 
-const belongsToCurrentUser= (currentUser, gmail)=>{
-    if(!currentUser) return false;
-    return currentUser.email === gmail;
+
+const getTutorgmail=(studentgmail)=>{
+    firestore.collection("contacts").where("tutorgmail","==", studentgmail).get().then((contact)=>{
+        if(contact.exists){
+            return contact.data().tutorgmail;
+        }
+    })
+}
+
+const belongsToCurrentUser= (currentgmail, gmail)=>{
+    if(!currentgmail) return false;
+    return currentgmail === gmail;
 }
 
 const Poststu = ({id, content, imageUrl, loves, time, tutorPictureurl, tutorgmail, tutorname, onRemove}) => {
     const {user}=useContext(UserContext);
+    const gmail=getTutorgmail(user.email);
 
     const postRef= firestore.collection('posts').doc(id);
     const love =()=>postRef.update({loves:loves+1});
 
     if(imageUrl!=null){
         return (
-            <div className="item" >
+            <div>
+                {belongsToCurrentUser(gmail,tutorgmail) && <div className="item" >
                 <div className="feed d-flex justify-content-between">
                     <div className="feed-body d-flex justify-content-between">
                         <span className="feed-profile">
@@ -58,7 +69,9 @@ const Poststu = ({id, content, imageUrl, loves, time, tutorPictureurl, tutorgmai
                         <div class="quote has-shadow"> <small>thả tym 🧡</small>
                         </div>
                 </div>   
+            </div>}
             </div>
+            
         )
     }else{
         return (
@@ -68,7 +81,6 @@ const Poststu = ({id, content, imageUrl, loves, time, tutorPictureurl, tutorgmai
                         <span className="feed-profile">
                             <img src={tutorPictureurl} alt="person" className="img-fluid rounded-circle" />
                         </span>
-    
                         <div className="content">
                             <h5>{tutorname}</h5>
                             <div className="full-date"><small>{moment(time.toDate()).calendar()}</small></div>

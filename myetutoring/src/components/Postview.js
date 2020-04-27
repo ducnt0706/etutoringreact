@@ -1,4 +1,4 @@
-import React, { Component,useContext }from 'react';
+import React, { useContext }from 'react';
 import { firestore} from '../firebaseconfig';
 import Post from '../components/Post';
 import Postadd from '../components/Postadd';
@@ -9,7 +9,7 @@ const Postview=()=>{
   
   const handleRemove= (id)=>{
     var confirm=window.confirm("Are you sure you want to remove this post?");
-    if(confirm==true){
+    if(confirm===true){
       //TODO:Delete data from db
     firestore.collection('posts').doc(id).delete().then(function () {
       console.log("Document successfully deleted!");

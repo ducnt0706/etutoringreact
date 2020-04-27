@@ -9,7 +9,7 @@ const Meetingview=()=>{
 
   const handleRemove = (id)=>{
     var confirm=window.confirm("Are you sure you want to remove this meeting?");
-    if(confirm==true){
+    if(confirm===true){
       //TODO:Delete data from db
     firestore.collection('meetings').doc(id).delete().then(function () {
       console.log("Document successfully deleted!");
