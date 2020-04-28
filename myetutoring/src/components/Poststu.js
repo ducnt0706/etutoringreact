@@ -1,25 +1,25 @@
 import React, {useContext} from 'react';
 import {firestore} from '../firebaseconfig';
 import moment from 'moment';
-import {UserContext} from '../providers/Userprovider';
+//import {UserContext} from '../providers/Userprovider';
 
 
-const getTutorgmail=(studentgmail)=>{
-    firestore.collection("contacts").where("tutorgmail","==", studentgmail).get().then((contact)=>{
-        if(contact.exists){
-            return contact.data().tutorgmail;
-        }
-    })
-}
+// const getTutorgmail=(studentgmail)=>{
+//     firestore.collection("contacts").where("tutorgmail","==", studentgmail).get().then((contact)=>{
+//         if(contact.exists){
+//             return contact.data().tutorgmail;
+//         }
+//     })
+// }
 
-const belongsToCurrentUser= (currentgmail, gmail)=>{
-    if(!currentgmail) return false;
-    return currentgmail === gmail;
-}
+// const belongsToCurrentUser= (currentgmail, gmail)=>{
+//     if(!currentgmail) return false;
+//     return currentgmail === gmail;
+// }
 
 const Poststu = ({id, content, imageUrl, loves, time, tutorPictureurl, tutorgmail, tutorname, onRemove}) => {
-    const {user}=useContext(UserContext);
-    const gmail=getTutorgmail(user.email);
+    //const {user}=useContext(UserContext);
+    //const gmail=getTutorgmail(user.email);
 
     const postRef= firestore.collection('posts').doc(id);
     const love =()=>postRef.update({loves:loves+1});
@@ -27,7 +27,7 @@ const Poststu = ({id, content, imageUrl, loves, time, tutorPictureurl, tutorgmai
     if(imageUrl!=null){
         return (
             <div>
-                {belongsToCurrentUser(gmail,tutorgmail) && <div className="item" >
+                <div className="item" >
                 <div className="feed d-flex justify-content-between">
                     <div className="feed-body d-flex justify-content-between">
                         <span className="feed-profile">
@@ -69,7 +69,7 @@ const Poststu = ({id, content, imageUrl, loves, time, tutorPictureurl, tutorgmai
                         <div class="quote has-shadow"> <small>thả tym 🧡</small>
                         </div>
                 </div>   
-            </div>}
+            </div>
             </div>
             
         )

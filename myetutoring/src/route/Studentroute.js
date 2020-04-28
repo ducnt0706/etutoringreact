@@ -21,7 +21,7 @@ const Studentroute=()=>  {
                         <Switch>
                             <Route exact path='/' component={Homepagestu} />
                             <Route path='/contact' component={Contactstu} />
-                            <Route path='/message' component={Message} />
+                            <Route path='/message' component={Message}/>
                         </Switch>
                     </div>
                 </div>
