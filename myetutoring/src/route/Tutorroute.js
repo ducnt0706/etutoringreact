@@ -9,6 +9,7 @@ import Message from '../screens/Message';
 import {BrowserRouter, Switch,Route} from 'react-router-dom';
 //TODO: to import Usercontext
 import {UserContext} from '../providers/Userprovider';
+import Postpage from '../components/tutor/Postpage';
 
 const Tutorroute=()=>  {
     const {user}= useContext(UserContext);
@@ -22,6 +23,7 @@ const Tutorroute=()=>  {
                             <Route exact path='/' component={Homepage} />
                             <Route path='/contact' component={Contact} />
                             <Route path='/message' component={Message} />
+                            <Route path='/posts/:id' component={Postpage}/>
                         </Switch>
                     </div>
                 </div>
