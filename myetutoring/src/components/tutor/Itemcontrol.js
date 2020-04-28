@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../css/Itemcontrol.css';
+import '../../css/Itemcontrol.css';
 class Itemcontrol extends Component {
    
     render() {

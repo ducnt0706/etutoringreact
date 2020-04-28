@@ -1,8 +1,8 @@
 import React, { useContext }from 'react';
-import {firestore} from '../firebaseconfig';
-import Meetingstu from '../components/Meetingstu';
+import {firestore} from '../../firebaseconfig';
+import Meetingstu from './Meetingstu';
 //TODO: get data form post provider
-import {MeetingContext} from '../providers/Meetingprovider';
+import {MeetingContext} from '../../providers/Meetingprovider';
 
 const Meetingviewstu =()=>{
 

@@ -1,21 +1,21 @@
 import React, {useContext} from 'react';
-import {UserContext} from '../providers/Userprovider';
+import {UserContext} from '../../providers/Userprovider';
 
 const belongsToCurrentUser= (currentUser, gmail)=>{
     if(!currentUser) return false;
     return currentUser.email === gmail;
 }
 
-const Meeting = ({ id,content, date, status, studentgmail, studentname, time, title,tutorgmail, onRemove }) => {
+const Meetingstu = ({ id,content, date, status, studentgmail, studentname, time, title,tutorgmail,tutorname, onConfilm }) => {
     const {user}=useContext(UserContext);
 
     return (
         <div>
-            {belongsToCurrentUser(user,tutorgmail) && <div className="item">
+            {belongsToCurrentUser(user,studentgmail) && <div className="item">
             <div className="row">
                 <div className="col-4 date-holder bg-color-orange">
                     <div className="text-right">
-                        <div className="icon bg-danger pointer" onClick={()=>onRemove(id)} ><i className="fa fa-close "></i></div>
+                        <div className={status?"icon bg-success pointer":"icon btn btn-outline-success pointer"} onClick={()=>onConfilm(id)} ><i className="fa fa-check "></i></div>
                     </div>
                     <div className="date text-center">
                         <h3 className="text-color-black">{time}</h3>
@@ -26,7 +26,7 @@ const Meeting = ({ id,content, date, status, studentgmail, studentname, time, ti
                 <div id="tutor-meeting-content" className="col-8 content">
                     <h5>{title}</h5>
                     <h6>{content}</h6>
-                    <p>{studentname} <br/> {studentgmail}</p>
+                    <p>{tutorname} <br/> {tutorgmail}</p>
                 </div>
             </div>
             </div>}
@@ -34,4 +34,4 @@ const Meeting = ({ id,content, date, status, studentgmail, studentname, time, ti
     )
 }
 
-export default Meeting;
+export default Meetingstu;

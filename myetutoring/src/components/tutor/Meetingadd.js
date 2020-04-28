@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
-import { firestore,fireauth} from '../firebaseconfig';
+import { firestore,fireauth} from '../../firebaseconfig';
 
 class Meetingadd extends Component {
     constructor(props) {

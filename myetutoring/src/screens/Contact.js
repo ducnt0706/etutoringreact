@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Footer from '../components/Footer';
-import Contactview from '../components/Contactview';
+import Contactview from '../components/tutor/Contactview';
 import Contactprovider from '../providers/Contactprovider';
 
 class Contact extends Component {

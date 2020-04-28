@@ -14,8 +14,7 @@ const Contactviewad=()=> {
                 {contacts.map(contact => <Contactad {...contact} key={contact.id} />)}
             </div>
             
-        </div>
-        
+        </div> 
     );
     
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
-import { firestore,fireauth,firestorage} from '../firebaseconfig';
+import { firestore,fireauth,firestorage} from '../../firebaseconfig';
 
 class Postadd extends Component {
     constructor(props) {

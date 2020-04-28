@@ -1,7 +1,7 @@
 import React, { useContext }from 'react';
-import Poststu from '../components/Poststu';
+import Poststu from './Poststu';
 //TODO: get data form post provider
-import {PostContext} from '../providers/Postprovider';
+import {PostContext} from '../../providers/Postprovider';
 
 const Postviewstu=()=>{
   

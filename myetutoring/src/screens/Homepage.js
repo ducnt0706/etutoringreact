@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Itemcontrol from '../components/Itemcontrol';
-import Postview from '../components/Postview';
-import Meetingview from '../components/Meetingview';
+import Itemcontrol from '../components/tutor/Itemcontrol';
+import Postview from '../components/tutor/Postview';
+import Meetingview from '../components/tutor/Meetingview';
 import Footer from '../components/Footer';
 //Model data from providers
 import Postprovider from '../providers/Postprovider';

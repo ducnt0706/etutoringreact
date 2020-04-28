@@ -1,23 +1,22 @@
 import React, { useContext } from 'react';
-import Contact from '../components/Contact';
+import Contactstu from './Contactstu';
 //TODO: get data form post provider
-import {ContactContext} from '../providers/Contactprovider';
+import {ContactContext} from '../../providers/Contactprovider';
 
 
-const Contactview=()=> {
+const Contactviewstu=()=> {
     
     const contacts=useContext(ContactContext);
 
     return (
         <div className="container-fluid">
             <div className="row">
-                {contacts.map(contact => <Contact {...contact} key={contact.id} />)}
+                {contacts.map(contact => <Contactstu {...contact} key={contact.id} />)}
             </div>
             
         </div>
         
     );
-    
 }
 
-export default Contactview;
+export default Contactviewstu;

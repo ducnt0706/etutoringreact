@@ -1,9 +1,9 @@
 import React, { useContext }from 'react';
-import { firestore} from '../firebaseconfig';
-import Post from '../components/Post';
-import Postadd from '../components/Postadd';
+import { firestore} from '../../firebaseconfig';
+import Post from './Post';
+import Postadd from './Postadd';
 //TODO: get data form post provider
-import {PostContext} from '../providers/Postprovider';
+import {PostContext} from '../../providers/Postprovider';
 
 const Postview=()=>{
   

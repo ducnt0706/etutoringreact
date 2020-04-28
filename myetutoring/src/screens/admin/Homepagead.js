@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Itemcontrolad from '../../components/Itemcontrolad';
+import Itemcontrolad from '../../components/admin//Itemcontrolad';
 import Contactadd from '../../components/admin/Contactadd';
 import Contactviewad from '../../components/admin/Contactviewad';
 import Footer from '../../components/Footer';
