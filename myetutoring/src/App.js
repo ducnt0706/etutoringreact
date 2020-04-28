@@ -9,16 +9,17 @@ import './css/fontastic.css';
 import Login from './screens/Login';
 import Tutorroute from './route/Tutorroute';
 import Studentroute from './route/Studentroute';
+import Adminroute from './route/Adminroute';
 //TODO: to import Usercontext
 import {UserContext} from './providers/Userprovider'
-import {TutorContext} from './providers/Tutorprovider';
+//import {TutorContext} from './providers/Tutorprovider';
 
 //REGION: App component
 const App = ()=> {
     const {user,loading}= useContext(UserContext);
-    const tutors=useContext(TutorContext);
+    //const tutors=useContext(TutorContext);
 
-    if(loading) return null;
+    //if(loading) return null;
     
     // const isTutor=(gmail)=>{
     //   tutors.forEach(tutor=> {
@@ -34,7 +35,10 @@ const App = ()=> {
         return <Tutorroute/>
       }else if(user.email==="ducnt0706@gmail.com"){
         return <Studentroute/>
-      }else{
+      }else if(user.email==="toanpvgch17585@fpt.edu.vn"){
+        return <Adminroute/>
+      }
+      else{
         return <Login/>
       }
     }else{
