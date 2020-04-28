@@ -17,7 +17,6 @@ const Contactviewstu=()=> {
         </div>
         
     );
-    
 }
 
 export default Contactviewstu;

@@ -73,10 +73,14 @@ class Meetingadd extends Component {
 
 
                                     <div className="modal-body">
-                                        <input type="text" placeholder="Title" onChange={txt=>this.setState({title:txt.target.value})} /><br />
-                                        <textarea className="form-control" rows="1" placeholder="Content" onChange={txt=>this.setState({content:txt.target.value})} ></textarea>
-                                        <input type="date" onChange={txt=>this.setState({date:txt.target.value})}/><br />
-                                        <input type="time" onChange={txt=>this.setState({time:txt.target.value})} /><br />
+                                        <div className="text-center">
+                                          <span>Title: </span><input type="text" onChange={txt=>this.setState({title:txt.target.value})} />
+                                        </div>
+                                        
+
+                                        <textarea className="form-control" rows="1" placeholder="Content of meeting..." onChange={txt=>this.setState({content:txt.target.value})} ></textarea>
+                                        <label ><i className="fa fa-calendar"></i> Date: </label><input type="date" onChange={txt=>this.setState({date:txt.target.value})}/>
+                                        <input type="time" className="pull-right" onChange={txt=>this.setState({time:txt.target.value})} /><label className="pull-right"><i className="fa fa-clock-o"></i>Time:</label><br />
                                         <div className="input-group mb-3">
                                             <div className="input-group-text">
                                                 <input type="checkbox"  value="false" disabled />

@@ -79,13 +79,13 @@ class Postadd extends Component {
                 <div className="modal-content">
 
                     <div className="modal-header">
-                        <h4 className="modal-title">Modal Heading</h4>
+                        <h4 className="modal-title">New Post</h4>
                         <button type="button" className="close" data-dismiss="modal" onClick={this.toggleModal}>&times;</button>
                     </div>
 
                     <div className="modal-body">
                         <form id="create-new-post">
-                            <input type="text" placeholder="What is your mind?" onChange={(txt) => this.setState({ content: txt.target.value })} />
+                            <textarea className="container-fluid" type="text" placeholder="What is your mind?" onChange={(txt) => this.setState({ content: txt.target.value })} />
                             <br />
                             <input type="file" accept="image/*" capture onChange={(e) => this.setState({ file: e.target.files[0]})} />
                             <br />
