@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import Footer from '../../components/Footer';
-import Post from './Post';
+import Postdetail from './Postdetail';
 import Commentview from './Commentview';
 import { firestore } from '../../firebaseconfig';
 
 import { withRouter } from 'react-router-dom';
+import withUser from '../withUser';
 
 class Postpage extends Component {
     state = { post: null, comments: [] }
@@ -24,7 +25,10 @@ class Postpage extends Component {
 
     componentDidMount = () => {
         this.postRef().onSnapshot(snapshot => {
-            const post = this.collectIdsAndData(snapshot);
+            const post = {
+                id: snapshot.id,
+                ...snapshot.data(),
+            }
             this.setState({ post });
         })
 
@@ -41,15 +45,23 @@ class Postpage extends Component {
         })
 
     }
-    createComment =(comment) => {
+    createComment = (comment) => {
+        const name=this.props.user.user.displayName;
+        const photoUrl=this.props.user.user.photoURL;
         this.commentsRef().add({
-            ...comment,
+            content:comment,
+            time:new Date(),
+            user:{
+                displayName:name,
+                photoURL:photoUrl
+            }
         })
     }
 
 
     render() {
-        const { post, comments } = this.state;
+        //console.log(this.props.user);
+        const { post, comments } = this.state; 
         return (
             <div className="content-inner color-gradient-grey">
                 <header className="page-header">
@@ -64,10 +76,10 @@ class Postpage extends Component {
                                 <h3 className="h4"></h3>
                             </div>
                             <div id="tutor-post-box" className="card-body no-padding">
-                                {post && <Post {...post} />}
-                                <Commentview
-                                    comments={comments}
-                                    onCreate={this.createComment}
+                                {post && <Postdetail {...post} />}
+                                <Commentview 
+                                comments={comments} 
+                                onCreate={this.createComment} 
                                 />
                             </div>
                         </div>
@@ -79,4 +91,4 @@ class Postpage extends Component {
     }
 }
 
-export default withRouter(Postpage);
+export default withRouter(withUser((Postpage)));

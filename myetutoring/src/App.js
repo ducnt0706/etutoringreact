@@ -16,7 +16,7 @@ import {UserContext} from './providers/Userprovider'
 
 //REGION: App component
 const App = ()=> {
-    const {user,loading}= useContext(UserContext);
+    const {user}= useContext(UserContext);
     //const tutors=useContext(TutorContext);
 
     //if(loading) return null;
