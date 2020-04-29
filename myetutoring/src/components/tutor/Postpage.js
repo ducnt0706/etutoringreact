@@ -3,6 +3,7 @@ import Footer from '../../components/Footer';
 import Postdetail from './Postdetail';
 import Commentview from './Commentview';
 import { firestore } from '../../firebaseconfig';
+import { Link } from 'react-router-dom';
 
 import { withRouter } from 'react-router-dom';
 import withUser from '../withUser';
@@ -37,7 +38,7 @@ class Postpage extends Component {
                 return {
                     id: doc.id,
                     content: doc.data().content,
-                    user: doc.data().user,
+                    authuser: doc.data().authuser,
                     time: doc.data().time,
                 }
             });
@@ -46,45 +47,59 @@ class Postpage extends Component {
 
     }
     createComment = (comment) => {
-        const name=this.props.user.user.displayName;
-        const photoUrl=this.props.user.user.photoURL;
+        const name = this.props.user.user.displayName;
+        const photoUrl = this.props.user.user.photoURL;
+        const currentEmail = this.props.user.user.email;
         this.commentsRef().add({
-            content:comment,
-            time:new Date(),
-            user:{
-                displayName:name,
-                photoURL:photoUrl
+            content: comment,
+            time: new Date(),
+            authuser: {
+                displayName: name,
+                photoURL: photoUrl,
+                email: currentEmail
             }
         })
+    }
+    deleteComment = (id) => {
+        this.commentsRef().doc(id).delete();
     }
 
 
     render() {
         //console.log(this.props.user);
-        const { post, comments } = this.state; 
+        const { post, comments } = this.state;
         return (
             <div className="content-inner color-gradient-grey">
                 <header className="page-header">
                     <div className="container-fluid">
-                        <h2 className="no-margin-bottom">Post page</h2>
+                        <Link to='/'><h2 className="no-margin-bottom"><i className="fa fa-backward"></i> Back</h2></Link>
                     </div>
                 </header>
-                <div>
-                    <section className="dashboard-counts no-padding-bottom ">
-                        <div className="daily-feeds card">
-                            <div className="card-header">
-                                <h3 className="h4"></h3>
+                <section className="dashboard-counts no-padding-bottom ">
+                    <div className="container-fluid">
+                        <div className="row bg-white has-shadow">
+
+                            <div className="col-xl-6 col-sm-6">
+                                <div className="">
+
+                                    {post && <Postdetail {...post} />}
+
+                                 </div>
                             </div>
-                            <div id="tutor-post-box" className="card-body no-padding">
-                                {post && <Postdetail {...post} />}
-                                <Commentview 
-                                comments={comments} 
-                                onCreate={this.createComment} 
-                                />
+
+                            <div className="col-xl-3 col-sm-6">
+                                <div className="">
+                                    <Commentview
+                                        comments={comments}
+                                        onCreate={this.createComment}
+                                        onDelete={this.deleteComment}
+                                    />
+                                </div>
                             </div>
                         </div>
-                    </section>
-                </div>
+                    </div>
+                </section>
+
                 <Footer />
             </div>
         );
