@@ -81,13 +81,11 @@ class Postpage extends Component {
 
                             <div className="col-xl-6 col-sm-6">
                                 <div className="">
-
                                     {post && <Postdetail {...post} />}
-
                                  </div>
                             </div>
 
-                            <div className="col-xl-3 col-sm-6">
+                            <div className="col-xl-6 col-sm-6">
                                 <div className="">
                                     <Commentview
                                         comments={comments}

@@ -20,10 +20,12 @@ class Commentadd extends Component {
     const { content } = this.state;
 
     return (
-      <form >
-        <input type="text" onChange={(e) => this.setState({ content: e.target.value })} />
-        <button type="submit" className="btn btn-warning" onClick={this.handleSubmit}>Comment</button>
-      </form>
+      <div class="input-group mb-3 text-center">
+        <input type="text" class="form-control" placeholder="Write a comment" onChange={(e) => this.setState({ content: e.target.value })}/>
+        <div class="input-group-prepend">
+          <button class="btn btn-outline-warning" type="submit" onClick={this.handleSubmit}>Comment</button>
+        </div>
+      </div>
     );
   }
 }

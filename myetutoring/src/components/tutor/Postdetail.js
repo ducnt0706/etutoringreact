@@ -18,65 +18,61 @@ const Post = ({id, content, imageUrl, loves, time, tutorPictureurl, tutorgmail, 
     if(imageUrl!=null){
         return (
             <div className="item" >
-                <div className="feed d-flex justify-content-between">
-                    <div className="feed-body d-flex justify-content-between">
-                        <span className="feed-profile">
-                            <img src={tutorPictureurl} alt="person" className="img-fluid rounded-circle" />
-                        </span>
-    
-                        <div className="content">
-                            <h5>{tutorname}</h5>
-                            <div className="full-date"><small>{moment(time.toDate()).calendar()}</small></div>
-                            <hr />
-                            <p>{content}</p>
-                            <img src={imageUrl} className="img-fluid" />
-                        </div>
-                    </div>
+            <div className="row ">
+                <div className="col-3 col-sm-2">
+                    <span className="feed-profile">
+                        <img src={tutorPictureurl} className="img-fluid rounded-circle" />
+                    </span>
                 </div>
-                <br/>
-                <div className="row">
-                    <div className="col-sm-4">
-                        <button className="btn btn-xs  container-fluid " onClick={love}><i className="fa fa-heart"></i> {loves} Loves</button>
-                    </div>
-                    <div className="col-sm-4">
-                        <Link to= {`/posts/${id}`}><button className="btn btn-xs  container-fluid"><i className="fa fa-comments"></i> Comment</button></Link>
-                    </div>
-                    <div className="col-sm-4">
-                    </div>
-                </div>   
+                <div className="col-7 col-sm-8">                 
+                    <h5>{tutorname}</h5>
+                    <div className="full-date"><small>{moment(time.toDate()).calendar()}</small></div>
+                    <hr />
+                    <p>{content}</p>
+                    <img src={imageUrl} className="img-fluid" />  
+                </div>
             </div>
+            <br/>
+            <div className="row">
+                <div className="col-sm-6">
+                    <button className="btn btn-xs container-fluid " onClick={love}><i className="fa fa-heart"></i> {loves} Loves</button>
+                </div>
+                <div className="col-sm-6 text-center">
+                <Link to= {`/posts/${id}`}><button className="btn btn-xs container-fluid"><i className="fa fa-comments"></i> Comment</button></Link> 
+                </div>
+            </div>
+        </div>
         )
     }else{
         return (
             <div className="item" >
-                <div className="feed d-flex justify-content-between">
-                    <div className="feed-body d-flex justify-content-between">
+                <div className="row ">
+                    <div className="col-3 col-sm-2">
                         <span className="feed-profile">
                             <img src={tutorPictureurl} className="img-fluid rounded-circle" />
                         </span>
-    
-                        <div className="content">
-                            <h5>{tutorname}</h5>
-                            <div className="full-date"><small>{moment(time.toDate()).calendar()}</small></div>
-                            <hr />
-                            <p>{content}</p>
-                        </div>
+                    </div>
+                    <div className="col-7 col-sm-8">                 
+                        <h5>{tutorname}</h5>
+                        <div className="full-date"><small>{moment(time.toDate()).calendar()}</small></div>
+                        <hr />
+                        <p>{content}</p>  
                     </div>
                 </div>
                 <br/>
                 <div className="row">
-                    <div className="col-sm-4">
-                        <button className="btn btn-xs  container-fluid " onClick={love}><i className="fa fa-heart"></i> {loves} Loves</button>
+                    <div className="col-sm-6">
+                        <button className="btn btn-xs container-fluid " onClick={love}><i className="fa fa-heart"></i> {loves} Loves</button>
                     </div>
-                    <div className="col-sm-4">
-                    <Link to= {`/posts/${id}`}><button className="btn btn-xs  container-fluid"><i className="fa fa-comments"></i> Comment</button></Link> 
+                    <div className="col-sm-6 text-center">
+                    <Link to= {`/posts/${id}`}><button className="btn btn-xs container-fluid"><i className="fa fa-comments"></i> Comment</button></Link> 
                     </div>
-                    <div className="col-sm-4">
-                    </div>
-                </div>   
+                </div>
             </div>
         )
     }
 }
 
 export default Post;
+
+//

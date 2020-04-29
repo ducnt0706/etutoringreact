@@ -13,19 +13,21 @@ const Comment = ({ id,content, authuser, time, onDelete }) => {
 
     return (
         <div className="item" >
-            <div className="feed d-flex justify-content-between">
-                <div className="feed-body d-flex justify-content-between">
+            <div className="row">
+                <div className="col-3 col-sm-2">
                     <span className="feed-profile">
                         <img src={authuser.photoURL} className="img-fluid rounded-circle" />
                     </span>
+                </div>
+                <div className="col-7 col-sm-8">
                     <div className="content">
                         <h6>{authuser.displayName}</h6>
                     </div>
+                    <div className="date text-right"><small>{moment(time.toDate()).calendar()}</small></div>
+                    {belongsToCurrentUser(user,authuser) && <button className="pull-right bg-danger" onClick={()=>onDelete(id)}><i className="fa fa-close"></i></button>}
+                    <div className="quote has-shadow"> <small>{content}</small></div>
                 </div>
-                <div className="date text-right"><small>{moment(time.toDate()).calendar()}</small></div>
             </div>
-            {belongsToCurrentUser(user,authuser) && <button className="pull-right bg-danger" onClick={()=>onDelete(id)}><i className="fa fa-close"></i></button>}
-            <div className="quote has-shadow"> <small>{content}</small></div>
         </div>
     );
 }
