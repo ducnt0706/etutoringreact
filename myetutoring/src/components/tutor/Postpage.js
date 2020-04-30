@@ -6,7 +6,7 @@ import { firestore } from '../../firebaseconfig';
 import { Link } from 'react-router-dom';
 
 import { withRouter } from 'react-router-dom';
-import withUser from '../withUser';
+import withUser from '../../providers/withUser';
 
 class Postpage extends Component {
     state = { post: null, comments: [] }
@@ -22,7 +22,7 @@ class Postpage extends Component {
     commentsRef() {
         return this.postRef().collection('comments');
     }
-    collectIdsAndData = doc => ({ id: doc.id, ...doc.data() })
+
 
     componentDidMount = () => {
         this.postRef().onSnapshot(snapshot => {

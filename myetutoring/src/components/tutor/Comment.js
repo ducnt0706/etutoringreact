@@ -12,7 +12,7 @@ const Comment = ({ id,content, authuser, time, onDelete }) => {
     const {user}=useContext(UserContext);
 
     return (
-        <div className="item" >
+        <div className="item">
             <div className="row">
                 <div className="col-3 col-sm-2">
                     <span className="feed-profile">

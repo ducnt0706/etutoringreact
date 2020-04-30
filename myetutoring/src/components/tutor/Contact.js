@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { UserContext } from '../../providers/Userprovider';
 import stvetor from '../../img/student.jpg';
 import moment from 'moment';
+import {Link} from 'react-router-dom';
 
 const belongsToCurrentUser = (currentUser, gmail) => {
     if (!currentUser) return false;
@@ -28,7 +29,7 @@ const Contact = ({tutorgmail,tutorname,studentname,studentgmail,studentmobile,st
                         <div className="client-title">
                             <h3>{studentname}</h3>
                             <h3>{studentmssv}</h3>
-                            <span>Contact</span>
+                            <Link to={`/chats/${studentgmail}`}><span>Contact</span></Link>
                         </div>
                         <br />
                         <p className="text-danger">

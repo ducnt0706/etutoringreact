@@ -1,5 +1,5 @@
 import React from 'react';
-import { UserContext } from '../providers/Userprovider';
+import { UserContext } from './Userprovider';
 
 function getDisplayName(WrappedComponent) {
     return WrappedComponent.displayName || WrappedComponent.name || 'Component';

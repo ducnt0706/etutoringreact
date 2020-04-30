@@ -3368,6 +3368,8 @@ a > code {
   font-size: 125%;
 }
 
+/*=======================================My custom css=========================*/
+
 .color-gradient-pink{
   background-image: linear-gradient(to left, #FAD7A1 , #E96D71);
 }
@@ -3389,3 +3391,6 @@ a > code {
 .text-color-black{
   color:black;
 }
+
+
+

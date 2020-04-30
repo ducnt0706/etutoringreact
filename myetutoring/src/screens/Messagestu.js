@@ -2,16 +2,13 @@ import React, { Component } from 'react';
 import Footer from '../components/Footer';
 import '../css/Message.css';
 
-import Chatlist from '../components/tutor/Chatlist';
 import Chatbox from '../components/Chatbox';
-
-import Contactprovider from '../providers/Contactprovider';
 
 //TODO: To import router react
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 
-class Message extends Component {
+class Messagestu extends Component {
     render() {
         return (
             <BrowserRouter>
@@ -27,19 +24,9 @@ class Message extends Component {
                             <div className="container-fluid">
 
                                 <div className="row">
-                                    <div className="card p-5">
-
-                                        <div className="messaging">
-                                            <div className="inbox_msg">
-                                                <Contactprovider>
-                                                    <Chatlist />
-                                                </Contactprovider>
-                                                <Switch>
-                                                    <Route path='/chats/:id' component={Chatbox}/>
-                                                </Switch>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <Switch>
+                                        <Route path='/chats/:id' component={Chatbox}/>
+                                    </Switch>                                        
                                 </div>
                             </div>
                         </section>
@@ -51,4 +38,4 @@ class Message extends Component {
     }
 }
 
-export default Message;
+export default Messagestu;

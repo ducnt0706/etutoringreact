@@ -1,6 +1,7 @@
 import React, {useContext} from 'react';
 import {firestore} from '../../firebaseconfig';
 import moment from 'moment';
+import {Link} from 'react-router-dom';
 //import {UserContext} from '../providers/Userprovider';
 
 
@@ -49,26 +50,11 @@ const Poststu = ({id, content, imageUrl, loves, time, tutorPictureurl, tutorgmai
                         <button className="btn btn-xs  container-fluid " onClick={love}><i className="fa fa-heart"></i> {loves} Loves</button>
                     </div>
                     <div className="col-sm-4">
-                        <button className="btn btn-xs  container-fluid"><i className="fa fa-comments"></i> Comment</button>
+                        <Link to= {`/posts/${id}`}><button className="btn btn-xs  container-fluid"><i className="fa fa-comments"></i> Comment</button></Link>
                     </div>
                     <div className="col-sm-4">
                     </div>
-                </div>
-                <div className="item clearfix">
-                        <div className="feed d-flex justify-content-between">
-                          <div className="feed-body d-flex justify-content-between">
-                            <span className="feed-profile">
-                              <img src="https://photo-2-baomoi.zadn.vn/w1000_r1/2019_08_10_119_31788589/3793ed558f15664b3f04.jpg" alt="person" className="img-fluid rounded-circle"/>
-                            </span>
-                            <div className="content">
-                              <h6>Hoc sinh ngoan</h6>
-                            </div>
-                          </div>
-                          <div className="date text-right"><small>5min ago</small></div>
-                        </div>
-                        <div className="quote has-shadow"> <small>thả tym 🧡</small>
-                        </div>
-                </div>   
+                </div>  
             </div>
             </div>
             
@@ -95,7 +81,7 @@ const Poststu = ({id, content, imageUrl, loves, time, tutorPictureurl, tutorgmai
                         <button className="btn btn-xs  container-fluid " onClick={love}><i className="fa fa-heart"></i> {loves} Loves</button>
                     </div>
                     <div className="col-sm-4">
-                        <button className="btn btn-xs  container-fluid"><i className="fa fa-comments"></i> Comment</button>
+                        <Link to= {`/posts/${id}`}><button className="btn btn-xs  container-fluid"><i className="fa fa-comments"></i> Comment</button></Link>
                     </div>
                     <div className="col-sm-4">
                     </div>

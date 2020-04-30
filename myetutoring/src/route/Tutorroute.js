@@ -22,7 +22,7 @@ const Tutorroute=()=>  {
                         <Switch>
                             <Route exact path='/' component={Homepage} />
                             <Route path='/contact' component={Contact} />
-                            <Route path='/message' component={Message} />
+                            <Route path='/chats' component={Message} />
                             <Route path='/posts/:id' component={Postpage}/>
                         </Switch>
                     </div>

@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { UserContext } from '../../providers/Userprovider';
 import tuvetor from '../../img/tuvetor.jpg';
+import {Link} from 'react-router-dom';
 
 const belongsToCurrentUser = (currentUser, gmail) => {
     if (!currentUser) return false;
@@ -11,7 +12,7 @@ const Contactstu = ({tutorgmail,tutormobile,tutorname,studentname,studentgmail,s
     const {user} = useContext(UserContext);
 
     return (
-        <div className="col-lg-4 ">
+        <div>
             {belongsToCurrentUser(user,studentgmail) &&
                 <div className="client card">
                     <div className="card-close">
@@ -27,7 +28,7 @@ const Contactstu = ({tutorgmail,tutormobile,tutorname,studentname,studentgmail,s
                         <div className="client-title">
                             <h3>{tutorname}</h3>
                             <h3>Personal tutor</h3>
-                            <span>Contact</span>
+                            <Link to={`/chats/${studentgmail}`}><span>Contact</span></Link>
                         </div>
                         <br />
                         <div className="row">
