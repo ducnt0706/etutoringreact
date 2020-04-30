@@ -1,4 +1,4 @@
-import React, { Component,createContext } from 'react';
+import React, { Component, createContext } from 'react';
 import {firestore} from '../firebaseconfig';
 
 export const TutorContext=createContext();
@@ -20,10 +20,9 @@ class Tutorprovider extends Component {
     }
 
     render() {
-        const {tutors} = this.state;
         const {children}=this.props;
         return (
-            <TutorContext.Provider value={tutors}>{children}</TutorContext.Provider>
+            <TutorContext.Provider value={this.state}>{children}</TutorContext.Provider>
         );
     }
 }

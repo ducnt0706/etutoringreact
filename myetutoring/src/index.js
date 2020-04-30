@@ -5,10 +5,14 @@ import App from './App';
 //TODO:
 import Userprovider from './providers/Userprovider';
 import Tutorprovider from './providers/Tutorprovider';
+import Studentprovider from './providers/Studentprovider';
+
 ReactDOM.render(
-<Userprovider>
+<Userprovider>  
     <Tutorprovider>
-        <App/>
+        <Studentprovider>
+            <App/>
+        </Studentprovider>
     </Tutorprovider>
 </Userprovider>
 ,

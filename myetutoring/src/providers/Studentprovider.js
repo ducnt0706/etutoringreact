@@ -20,10 +20,9 @@ class Studentprovider extends Component {
     }
 
     render() {
-        const {students} = this.state;
         const {children}=this.props;
         return (
-            <StudentContext.Provider value={students}>{children}</StudentContext.Provider>
+            <StudentContext.Provider value={this.state}>{children}</StudentContext.Provider>
         );
     }
 }

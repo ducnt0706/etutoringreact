@@ -12,28 +12,23 @@ import Studentroute from './route/Studentroute';
 import Adminroute from './route/Adminroute';
 //TODO: to import Usercontext
 import {UserContext} from './providers/Userprovider'
-//import {TutorContext} from './providers/Tutorprovider';
-
+import {TutorContext} from './providers/Tutorprovider';
+import {StudentContext} from './providers/Studentprovider';
 //REGION: App component
 const App = ()=> {
     const {user}= useContext(UserContext);
-    //const tutors=useContext(TutorContext);
-
+    const {tutors} =useContext(TutorContext);
+    const {students}=useContext(StudentContext);
     //if(loading) return null;
-    
-    // const isTutor=(gmail)=>{
-    //   tutors.forEach(tutor=> {
-    //     if(tutor.tutorgmail===gmail){
-    //       return true;
-    //     }
-    //   });
-    //   return false;     
-    // }
+  
 
     if(user!=null){
-      if(user.email==="ducntgch17377@fpt.edu.vn"){
+      var listTutormail=tutors.map(x=>x.tutorgmail);
+      var listStudentmail=students.map(x=>x.studentgmail);
+
+      if(listTutormail.includes(user.email)===true){
         return <Tutorroute/>
-      }else if(user.email==="ducnt0706@gmail.com"){
+      }else if(listStudentmail.includes(user.email)===true){
         return <Studentroute/>
       }else if(user.email==="toanpvgch17585@fpt.edu.vn"){
         return <Adminroute/>
