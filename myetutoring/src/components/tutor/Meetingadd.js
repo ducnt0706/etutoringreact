@@ -45,7 +45,7 @@ class Meetingadd extends Component {
           console.log("Meeting Document successfully written!");
         })
         this.toggleModal()
-      }
+    }
 
     render() {
         return (

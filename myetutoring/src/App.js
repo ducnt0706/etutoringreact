@@ -14,7 +14,10 @@ import Adminroute from './route/Adminroute';
 import {UserContext} from './providers/Userprovider'
 import {TutorContext} from './providers/Tutorprovider';
 import {StudentContext} from './providers/Studentprovider';
-//REGION: App component
+//REGION: firestore
+import{firestore} from './firebaseconfig';
+
+
 const App = ()=> {
     const {user}= useContext(UserContext);
     const {tutors} =useContext(TutorContext);
@@ -29,6 +32,11 @@ const App = ()=> {
       if(listTutormail.includes(user.email)===true){
         return <Tutorroute/>
       }else if(listStudentmail.includes(user.email)===true){
+        //let docRef=firestore.collection('contacts').where('studentgmail',"==",user.email).get();
+        //console.log(docRef);
+        // docRef.update({
+        //   studenttimeinteract:new Date(),
+        // });
         return <Studentroute/>
       }else if(user.email==="toanpvgch17585@fpt.edu.vn"){
         return <Adminroute/>
