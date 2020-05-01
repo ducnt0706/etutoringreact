@@ -21,9 +21,6 @@ const Statictutor = ({tutorgmail,tutorname,tutormobile }) => {
                             <h3>Tutor</h3>
                         </div>
                         <br />
-                        <p className="text-danger">
-                            Number of messages in 7 days: ??
-                        </p>
                         <div className="row">
                             <div className="col-6">
                                 <i className="fa fa-phone"></i><br /><small>{tutormobile}</small>
