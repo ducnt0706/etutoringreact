@@ -13,6 +13,7 @@ class Studentprovider extends Component {
               studentmobile: doc.data().studentmobile,
               studentgmail: doc.data().studentgmail,
               studentname: doc.data().studentname
+              
             }
           });
           this.setState({students});
