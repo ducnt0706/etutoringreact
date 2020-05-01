@@ -12,10 +12,13 @@ const belongsToCurrentUser = (currentUser, gmail) => {
 const Contact = ({tutorgmail,tutorname,studentname,studentgmail,studentmobile,studentmssv,studenttimeinteract }) => {
     const {user} = useContext(UserContext);
 
+    var timeAbsent=Date.now()-studenttimeinteract;
+    var amountTime=Math.floor(timeAbsent/86400000);
+
     return (
-        <div className="col-lg-4 ">
+        <div >
             {belongsToCurrentUser(user,tutorgmail) &&
-                <div className="client card">
+                <div className="client-card client card">
                     <div className="card-close">
                         <button type="button" className="dropdown-toggle">
                             <i className="fa fa-ellipsis-v"></i>
@@ -33,9 +36,9 @@ const Contact = ({tutorgmail,tutorname,studentname,studentgmail,studentmobile,st
                         </div>
                         <br />
                         <p className="text-danger">
-                            Last Signin:{moment(studenttimeinteract.toDate()).calendar()}<br />
-                            7 days no interact
+                            Last Signin:{moment(studenttimeinteract).format("DD MMM YYYY hh:mm a")}<br />   
                         </p>
+                        <span className={amountTime>864000000*7?"text-danger":"text-success"}>{amountTime} absent days!</span>
                         <div className="row">
                             <div className="col-6">
                                 <i className="fa fa-phone"></i><br /><small>{studentmobile}</small>

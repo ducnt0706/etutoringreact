@@ -1214,6 +1214,9 @@ section.dashboard-counts div[class*='col-']:last-of-type .item {
 }
 
 /*====== Client Profile Box ======*/
+.client-card{
+  margin:5px;
+}
 .client .client-avatar {
   width: 100px;
   height: 100px;

@@ -21,7 +21,7 @@ const Chatitem = ({tutorgmail,tutorname,studentname,studentgmail,studentmobile,s
                         <img src={stvetor} className="img-fluid" />
                     </div>
                     <div className="chat_ib">
-                        <span className="pull-right">{moment(studenttimeinteract.toDate()).calendar()}</span>
+                        <span className="pull-right">{moment(studenttimeinteract).format("DD MMM YYYY hh:mm a")}</span>
                         <br/>
                         <h5>{studentname} </h5>
                         <p>{studentmssv}-{studentgmail}</p>

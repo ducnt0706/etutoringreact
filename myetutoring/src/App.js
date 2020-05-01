@@ -32,11 +32,10 @@ const App = ()=> {
       if(listTutormail.includes(user.email)===true){
         return <Tutorroute/>
       }else if(listStudentmail.includes(user.email)===true){
-        //let docRef=firestore.collection('contacts').where('studentgmail',"==",user.email).get();
-        //console.log(docRef);
-        // docRef.update({
-        //   studenttimeinteract:new Date(),
-        // });
+        var docId=user.email;
+        firestore.collection('contacts').doc(docId).update({
+          studenttimeinteract:Date.now(),
+        }); 
         return <Studentroute/>
       }else if(user.email==="toanpvgch17585@fpt.edu.vn"){
         return <Adminroute/>
