@@ -9,7 +9,7 @@ class Statictutor extends Component {
             <div className="content-inner color-gradient-grey">
                 <header className="page-header">
                     <div className="container-fluid">
-                        <h2 className="no-margin-bottom">Contact</h2>
+                        <h2 className="no-margin-bottom">Static Tutors!</h2>
                     </div>
                 </header>
                 <div>

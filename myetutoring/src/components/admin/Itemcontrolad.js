@@ -32,7 +32,7 @@ class Itemcontrolad extends Component {
                                 aria-valuemax="100" className="progress-bar bg-orange"></div>
                         </div>
                     </div>
-                    <div className="number"><strong>50</strong></div>
+                    <div className="number"><strong></strong></div>
                 </div>
             </div>
                                                                                 
