@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site":"tutor-react-app",
+    "site":"etutoring-contact",
     "public": "build",
     "ignore": [
       "firebase.json",
