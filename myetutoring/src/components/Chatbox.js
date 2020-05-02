@@ -27,7 +27,7 @@ class Chatbox extends Component {
     }
 
     componentDidMount = () => {
-        this.messagesRef().orderBy('time', 'asc').onSnapshot(snapshot => {
+        this.messagesRef().orderBy('time', 'desc').limit(10).onSnapshot(snapshot => {
             const messages = snapshot.docs.map(doc => {
                 return {
                     id: doc.id,
