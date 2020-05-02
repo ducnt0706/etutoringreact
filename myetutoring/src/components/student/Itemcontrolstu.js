@@ -18,7 +18,7 @@ class Itemcontrolstu extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="number"><strong>00</strong></div>
+                        <div className="number"><strong></strong></div>
 
                     </div>
                 </div>
@@ -26,13 +26,13 @@ class Itemcontrolstu extends Component {
                 <div className="col-xl-3 col-sm-6">
                 <div className="item d-flex align-items-center">
                     <div className="icon bg-primary"><i className="fa fa-comment"></i></div>
-                    <div className="title"><span><br />Messages</span>
+                    <div className="title"><span><br />Chatting</span>
                         <div className="progress">
                             <div role="progressbar" id="progressbar" aria-valuenow="50" aria-valuemin="0"
                                 aria-valuemax="100" className="progress-bar bg-orange"></div>
                         </div>
                     </div>
-                    <div className="number"><strong>50</strong></div>
+                    <div className="number"><strong></strong></div>
                 </div>
             </div>
                                                                                 
