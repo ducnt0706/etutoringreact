@@ -49,7 +49,7 @@ const Contactadd = () =>
         var stus = multiselectRef2.current.getSelectedItems();
         var tutor =multiselectRef1.current.getSelectedItems();
         if (tutor.length == 0 || stus.length == 0) {
-                alert(" có 2 cái ngu vừa thôi ");
+                alert(" just have 2 items ");
         } else {
                 stus.forEach((stu) => {
                         firebase.firestore()
@@ -74,7 +74,7 @@ const Contactadd = () =>
                                                 });
                                 })
                                 .then(() => getStudents())
-                                .then(() => console.log("set --- thanh cong"));
+                                .then(() => console.log("set --- success"));
                 });
                 multiselectRef1.current.resetSelectedValues();
                 multiselectRef2.current.resetSelectedValues();
