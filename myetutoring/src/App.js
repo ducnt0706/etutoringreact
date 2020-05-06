@@ -37,7 +37,7 @@ const App = ()=> {
           studenttimeinteract:Date.now(),
         }); 
         return <Studentroute/>
-      }else if(user.email==="ducnt0706@gmail.com"){
+      }else if(user.email==="ducnt0706@gmail.com" || user.email==="toanpvgch17585@fpt.edu.vn"){
         return <Adminroute/>
       }
       else{
